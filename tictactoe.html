@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tre på rad</title>
+
+<style type="text/css">
+	
+body{
+	margin: 0;
+}
+
+#innpakning{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#spill{
+	width: 312px;
+	height: 312px;
+	background-color: transparent;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ruter{
+	width: 100px;
+	height: 100px;
+	background-color: #00ffff;
+	border: 1px solid #00ffff;
+	color: #00ffff;
+	font-family: "Calibri";
+	font-size: 30px;
+	font-weight: bold;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.ruter:hover{
+	background-color: rgba(0, 255, 255, 0);
+}
+
+a{	
+	font-family: "Calibri";
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: #fff;
+	background-color: #00ffff;
+	padding: 10px;
+	border: 1px solid #00ffff;
+	margin-top: 20px;
+}
+
+a:hover{
+	color: #00ffff;
+	background-color: transparent;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<div id="innpakning">
+	<div id="spill">
+		<div id="0" class="ruter" onclick="play(0)"></div>
+		<div id="1" class="ruter" onclick="play(1)"></div>
+		<div id="2" class="ruter" onclick="play(2)"></div>
+
+		<div id="3" class="ruter" onclick="play(3)"></div>
+		<div id="4" class="ruter" onclick="play(4)"></div>
+		<div id="5" class="ruter" onclick="play(5)"></div>
+
+		<div id="6" class="ruter" onclick="play(6)"></div>
+		<div id="7" class="ruter" onclick="play(7)"></div>
+		<div id="8" class="ruter" onclick="play(8)"></div>
+	</div>
+	<a href="tictactoe.html">RESTART</a>
+	<a href="#" onclick="check()">check</a>
+</div>
+
+<script type="text/javascript">	
+
+	var count = 0;
+
+	// lager en array
+		var array = [];
+
+	function play(id) {
+
+		/*
+		if (array[0] == array[1] && array[0] == array[2]) {
+			console.log("like");
+		} else {
+			console.log("ulike");	
+		};	
+		*/
+
+		// sjekker om count er partall	
+		if (count % 2 == 0) {
+			document.getElementById(id).innerHTML = "x";
+			array[id] = "x";
+		} else {
+			document.getElementById(id).innerHTML = "o";
+			array[id] = "o";	
+		};
+		count++;
+
+		document.getElementById(id).style.backgroundColor = "transparent";
+		console.log(array);
+	};
+
+	/*
+	function check() {
+		var el = document.getElementById("uno").innerHTML;
+		if (el == "x") {
+			console.log("uno er x");
+		} else {
+			console.log("uno er o");
+		};
+	};
+	*/
+
+	/*
+		// Sjekker om brukeren vant
+		var un = document.getElementById("uno").innerHTML;
+		var deux = document.getElementById("dos").innerHTML;
+		var trois = document.getElementById("tres").innerHTML;
+		var quatre = document.getElementById("cuatro").innerHTML;
+		var cinq = document.getElementById("cinco").innerHTML;
+		var six = document.getElementById("seis").innerHTML;
+		var sept = document.getElementById("siete").innerHTML;
+		var huit = document.getElementById("ocho").innerHTML;
+		var neuf = document.getElementById("nueve").innerHTML;
+
+		if (un == "x" && deux == "x" && trois == "x") {
+			alert("X vant!");
+		} else if (un == "o" && deux == "o" && trois == "o") {
+			alert("O vant!");
+		} else if (quatre == "x" && cinq == "x" && six == "x") {
+			alert("X vant!");
+		} else if (quatre == "o" && cinq == "o" && six == "o") {
+			alert("O vant!");
+		} else if (sept == "x" && huit == "x" && neuf == "x") {
+			alert("X vant!");
+		} else if (sept == "o" && huit == "o" && neuf == "o") {
+			alert("O vant!");
+		} else if (un == "x" && quatre == "x" && sept == "x") {
+			alert("X vant!");
+		} else if (un == "o" && quatre == "o" && sept == "o") {
+			alert("O vant!");
+		} else if (deux == "x" && cinq == "x" && huit == "x") {
+			alert("X vant!");
+		} else if (deux == "o" && cinq == "o" && huit == "o") {
+			alert("O vant!");
+		} else if (trois == "x" && six == "x" && neuf == "x") {
+			alert("X vant!");
+		} else if (trois == "o" && six == "o" && neuf == "o") {
+			alert("O vant!");
+		} else if (un == "x" && cinq == "x" && neuf == "x") {
+			alert("X vant!");
+		} else if (un == "o" && cinq == "o" && neuf == "o") {
+			alert("O vant!");
+		} else if (trois == "x" && cinq == "x" && sept == "x") {
+			alert("X vant!");
+		} else if (trois == "o" && cinq == "o" && sept == "o") {
+			alert("O vant!");
+		};
+		*/
+
+	function check() {
+		console.log(array)
+	}
+
+</script>
+
+</body>
+</html>
