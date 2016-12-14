@@ -8,6 +8,8 @@
 	
 body{
 	margin: 0;
+	font-family: "Calibri";
+	letter-spacing: 1px;
 }
 
 #innpakning{
@@ -34,8 +36,7 @@ body{
 	height: 100px;
 	background-color: #00ffff;
 	border: 1px solid #00ffff;
-	color: #00ffff;
-	font-family: "Calibri";
+	color: #fff;
 	font-size: 30px;
 	font-weight: bold;
 	display: flex;
@@ -43,27 +44,69 @@ body{
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	transition: all 0.2s ease-in-out;
 }
 
 .ruter:hover{
-	background-color: rgba(0, 255, 255, 0);
+	border-radius: 50px;
+}
+
+#buttons{
+	width: 312px;
+	margin-top: 20px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
 }
 
 a{	
 	font-family: "Calibri";
 	font-weight: bold;
-	letter-spacing: 1px;
 	text-decoration: none;
 	color: #fff;
 	background-color: #00ffff;
+	margin-right: 10px;
 	padding: 10px;
 	border: 1px solid #00ffff;
-	margin-top: 20px;
 }
 
 a:hover{
 	color: #00ffff;
 	background-color: transparent;
+}
+
+#scoreboard{
+	width: 312px;
+	margin-top: 20px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.score{
+	width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.score b{
+	width: 100%;
+	text-align: center;
+	padding: 5px 0;
+	color: #fff;
+	background-color: #00ffff;
+}
+
+.score span{
+	padding: 5px 0;
+}
+
+.strike{
+	background-color: transparent;
+	color: #00ffff;
 }
 
 </style>
@@ -86,102 +129,170 @@ a:hover{
 		<div id="7" class="ruter" onclick="play(7)"></div>
 		<div id="8" class="ruter" onclick="play(8)"></div>
 	</div>
-	<a href="tictactoe.html">RESTART</a>
-	<a href="#" onclick="check()">check</a>
+	<div id="scoreboard">
+		<div class="score">
+			<b><span id="status">X&nbsp; TURN</span></b>
+			<span id="vinner"></span>
+		</div>
+	</div>
+	<div id="buttons">
+		<a href="tictactoe.html">RESTART</a>
+	</div>
 </div>
 
 <script type="text/javascript">	
 
 	var count = 0;
+	var cleared = 0;	
 
 	// lager en array
-		var array = [];
+	var array = [];
 
 	function play(id) {
-
-		/*
-		if (array[0] == array[1] && array[0] == array[2]) {
-			console.log("like");
-		} else {
-			console.log("ulike");	
-		};	
-		*/
-
 		// sjekker om count er partall	
 		if (count % 2 == 0) {
-			document.getElementById(id).innerHTML = "x";
 			array[id] = "x";
+			document.getElementById(id).innerHTML = array[id];
+			document.getElementById("status").innerHTML = "O&nbsp; TURN";
 		} else {
+			array[id] = "o";
 			document.getElementById(id).innerHTML = "o";
-			array[id] = "o";	
+			document.getElementById("status").innerHTML = "X&nbsp; TURN";	
 		};
 		count++;
 
-		document.getElementById(id).style.backgroundColor = "transparent";
+		// Skriver ut arrayen i consolen
 		console.log(array);
+
+		// Kaller funksjonen som sjekker vinneren
+		check();
 	};
 
-	/*
+
+	// Sjekker om noen har vunnet
 	function check() {
-		var el = document.getElementById("uno").innerHTML;
-		if (el == "x") {
-			console.log("uno er x");
-		} else {
-			console.log("uno er o");
+
+		// Variabler
+		var un = document.getElementById("0");
+		var deux = document.getElementById("1");
+		var trois = document.getElementById("2");
+		var quatre = document.getElementById("3");
+		var cinq = document.getElementById("4");
+		var six = document.getElementById("5");
+		var sept = document.getElementById("6");
+		var huit = document.getElementById("7");
+		var neuf = document.getElementById("8");
+		var vinnerEl = document.getElementById("vinner");		
+
+		if (un.innerHTML == "x" && deux.innerHTML == "x" && trois.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (un.innerHTML == "o" && deux.innerHTML == "o" && trois.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (quatre.innerHTML == "x" && cinq.innerHTML == "x" && six.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (quatre.innerHTML == "o" && cinq.innerHTML == "o" && six.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (sept.innerHTML == "x" && huit.innerHTML == "x" && neuf.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (sept.innerHTML == "o" && huit.innerHTML == "o" && neuf.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (un.innerHTML == "x" && quatre.innerHTML == "x" && sept.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (un.innerHTML == "o" && quatre.innerHTML == "o" && sept.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (deux.innerHTML == "x" && cinq.innerHTML == "x" && huit.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (deux.innerHTML == "o" && cinq.innerHTML == "o" && huit.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (trois.innerHTML == "x" && six.innerHTML == "x" && neuf.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (trois.innerHTML == "o" && six.innerHTML == "o" && neuf.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (un.innerHTML == "x" && cinq.innerHTML == "x" && neuf.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (un.innerHTML == "o" && cinq.innerHTML == "o" && neuf.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (trois.innerHTML == "x" && cinq.innerHTML == "x" && sept.innerHTML == "x") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER X";
+		} else if (trois.innerHTML == "o" && cinq.innerHTML == "o" && sept.innerHTML == "o") {
+			alert("Tre på rad!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "VINNEREN ER O";
+		} else if (un.innerHTML != "" && deux.innerHTML != "" && trois.innerHTML != "" && quatre.innerHTML != "" && cinq.innerHTML != "" && six.innerHTML != "" && sept.innerHTML != "" && huit.innerHTML != "" && neuf.innerHTML != "") {
+			alert("Uavgjort!");
+			document.getElementById("status").innerHTML = "GAME OVER";
+			document.getElementById("vinner").innerHTML = "UAVGJORT";
 		};
 	};
+
+	/* 	ARRAY CHECK
+	// Sjekker om noen har vunnet
+	function check() {
+		if (array[0] == array[1] && array[0] == array[2]) {
+			alert("GAME OVER");
+		} else if (array[3] == array[4] && array[3] == array[5]) {
+			alert("GAME OVER");
+		} else if (array[6] == array[7] && array[6] == array[8]) {
+			alert("GAME OVER");
+		} else if (array[0] == array[3] && array[0] == array[6]) {
+			alert("GAME OVER");
+		} else if (array[1] == array[4] && array[1] == array[7]) {
+			alert("GAME OVER");
+		} else if (array[2] == array[5] && array[2] == array[8]) {
+			alert("GAME OVER");
+		} else if (array[0] == array[4] && array[0] == array[8]) {
+			alert("GAME OVER");
+		} else if (array[2] == array[4] && array[2] == array[6]) {
+			alert("GAME OVER");
+		};	
+	};
+
+	function nyRunde() {
+		document.getElementById("0").innerHTML = "";
+		document.getElementById("1").innerHTML = "";
+		document.getElementById("2").innerHTML = "";
+		document.getElementById("3").innerHTML = "";
+		document.getElementById("4").innerHTML = "";
+		document.getElementById("5").innerHTML = "";
+		document.getElementById("6").innerHTML = "";
+		document.getElementById("7").innerHTML = "";
+		document.getElementById("8").innerHTML = "";
+
+		document.getElementById("0").style.backgroundColor = "00ffff";
+		document.getElementById("0").style.color = "#fff";
+	}
 	*/
 
-	/*
-		// Sjekker om brukeren vant
-		var un = document.getElementById("uno").innerHTML;
-		var deux = document.getElementById("dos").innerHTML;
-		var trois = document.getElementById("tres").innerHTML;
-		var quatre = document.getElementById("cuatro").innerHTML;
-		var cinq = document.getElementById("cinco").innerHTML;
-		var six = document.getElementById("seis").innerHTML;
-		var sept = document.getElementById("siete").innerHTML;
-		var huit = document.getElementById("ocho").innerHTML;
-		var neuf = document.getElementById("nueve").innerHTML;
-
-		if (un == "x" && deux == "x" && trois == "x") {
-			alert("X vant!");
-		} else if (un == "o" && deux == "o" && trois == "o") {
-			alert("O vant!");
-		} else if (quatre == "x" && cinq == "x" && six == "x") {
-			alert("X vant!");
-		} else if (quatre == "o" && cinq == "o" && six == "o") {
-			alert("O vant!");
-		} else if (sept == "x" && huit == "x" && neuf == "x") {
-			alert("X vant!");
-		} else if (sept == "o" && huit == "o" && neuf == "o") {
-			alert("O vant!");
-		} else if (un == "x" && quatre == "x" && sept == "x") {
-			alert("X vant!");
-		} else if (un == "o" && quatre == "o" && sept == "o") {
-			alert("O vant!");
-		} else if (deux == "x" && cinq == "x" && huit == "x") {
-			alert("X vant!");
-		} else if (deux == "o" && cinq == "o" && huit == "o") {
-			alert("O vant!");
-		} else if (trois == "x" && six == "x" && neuf == "x") {
-			alert("X vant!");
-		} else if (trois == "o" && six == "o" && neuf == "o") {
-			alert("O vant!");
-		} else if (un == "x" && cinq == "x" && neuf == "x") {
-			alert("X vant!");
-		} else if (un == "o" && cinq == "o" && neuf == "o") {
-			alert("O vant!");
-		} else if (trois == "x" && cinq == "x" && sept == "x") {
-			alert("X vant!");
-		} else if (trois == "o" && cinq == "o" && sept == "o") {
-			alert("O vant!");
-		};
-		*/
-
-	function check() {
-		console.log(array)
-	}
 
 </script>
 
