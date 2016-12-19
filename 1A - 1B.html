@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Oppgave 1: A og B</title>
+</head>
+<body>
+
+<div id="1a" class="oppgave">
+	<h1>OPPGAVE A</h1>
+</div>
+
+<div id="1b" class="oppgave">
+	<h1>OPPGAVE B</h1>
+	<button onclick="sorter()">START</button> <br>
+</div>
+
+<div id="1c" class="oppgave">
+	<h1>OPPGAVE C</h1>
+</div>
+
+<script type="text/javascript">
+
+// OPPGAVE 1A
+
+	// Lager en array med 7 tilfeldige tall mellom 1 og 10
+		var array = [];
+
+		for (var i = 0; i < 7; i++) {
+			var tilfeldig = Math.ceil(Math.random() * 10);
+			array.push(tilfeldig);
+		};
+
+		document.getElementById("1a").innerHTML += "Array: " + array;
+
+
+	// Bruker en løkke sammen med ifsetninger til å finne det minste tallet
+		var minst = array[0];
+
+		for (var i = 0; i < 7; i++) {
+			if (array[i] < minst) {
+				minst = array[i];
+			};
+		};
+
+		document.getElementById("1a").innerHTML += "<p> minst: " + minst + "</p>";
+
+
+	// Bruker en løkke sammen med ifsetninger til å finne det største tallet
+		var storst = array[0];
+
+		for (var i = 0; i < 7; i++) {
+			if (array[i] > storst) {
+				storst = array[i];
+			};
+		};
+
+		document.getElementById("1a").innerHTML += "<p> størst: " + storst + "</p>";
+
+
+// OPPGAVE 1B
+
+	function sorter() {
+
+		// Tar inn lengden
+		var lengde = prompt("Skriv inn lengden");
+		document.getElementById("1b").innerHTML += "lengde: " + lengde + "<br>";
+
+
+		// lager arrayen
+		var array = [];
+		for (var i = 0; i < lengde; i++){
+			var tilfeldig = Math.ceil(Math.random()*10); 
+			array.push(tilfeldig);
+		}
+		// Skriver ut arrayen
+		document.getElementById("1b").innerHTML += "array: " + array + "<br>";
+
+		// Sorterer arrayen
+		for (var i=0; i < lengde; i++){
+			for(var j=0; j<lengde; j++){
+				if (array[i] < array[j]) {
+					var lagre = array[j];
+					array[j] = array[i];
+					array[i] = lagre; 
+				}
+			}
+		};
+
+		// Skriver ut den sorterte arrayen
+		document.getElementById("1b").innerHTML += "array, sortert: " + array + "<br>";
+	};
+
+
+// OPPGAVE 1C
+
+	var person = [
+	["Zandrex", 18, "Ris"],
+	["Varshan", 19, "Pizza"],
+	["Felix", 20, "Sushi"],
+	["Nabila", 10, "Pasta"]
+	];
+
+	console.log(person);
+	document.write("<br>" + "Alder:" + "<br>");
+	document.write(person[0][1] + "<br>") ;
+	document.write(person[1][1] + "<br>") ;
+	document.write(person[2][1] + "<br>");
+	document.write(person[3][1] + "<br>");
+
+	person.splice(1,1);
+
+	console.log("Ny: " + person) ;
+
+	document.write("<br>" + "Ny alder:" + "<br>");
+	document.write(person[0][1] + "<br>") ;
+	document.write(person[1][1] + "<br>") ;
+	document.write(person[2][1] + "<br>");
+
+</script>
+
+</body>
+</html>
