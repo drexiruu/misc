@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Multimedieinnlevering</title>
+
+<style type="text/css">
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+
+body{
+	margin: 0;
+	font-size: 16px;
+	background-color: #000;
+}
+
+a{	
+	text-decoration: none;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 700;
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 2em;
+	text-transform: uppercase;
+	transition: all 0.1s ease-in-out;
+}
+
+a:hover{
+	color: #000;
+}
+
+#innpakning{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#knapper{
+	width: 350px;
+	height: 300px;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: flex-start;
+	background-color: transparent;
+	padding-left: 50px;
+}
+
+.bg{
+	width: 0px;
+	height: 30px;
+	position: absolute;
+	margin-top: -38px;
+	margin-left: -50px;
+	z-index: -1;
+	transition: all 0.3s ease-in-out;
+}
+
+.uno{
+	background-color: #ff00ff;
+}
+
+.dos{
+	background-color: #ffff00;
+}
+
+.tres{
+	background-color: #00ffff;
+}
+
+a:hover .bg{
+	width: 100%;
+}
+
+
+#videobox{
+	width: 600px;
+	height: 100vh;
+	background-color: transparent;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+video{
+	width: 480px;
+	display: none;
+}
+
+</style>	
+
+</head>
+<body>
+
+<div id="innpakning">
+	<div id="knapper">
+		<a href="#" onclick="visVideo('halden')">Halden <div class="bg uno"></div> </a>
+		<a href="#" onclick="visVideo('fredrikstad')">Fredrikstad <div class="bg dos"></div> </a>
+		<a href="#" onclick="visVideo('fftb')">Fra fjord til bord <div class="bg tres"></div> </a>
+	</div>
+	<div id="videobox">
+		<video id="vid" controls>
+			<source src="halden.mp4" type="video/mp4">
+			Din nettleser støtter ikke video-elementet. <!-- if playback error -->
+		</video>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function visVideo(navn) {
+
+	var videoEl = document.querySelector("#vid");
+
+	videoEl.src = navn + ".mp4";
+	videoEl.style.display = "block";
+
+	var i = 0;
+
+	if (navn == "halden") {
+		i = 0;
+	} else if (navn == "fredrikstad") {
+		i = 1;
+	} else {
+		i = 2;
+	};
+
+	var bg = document.querySelectorAll(".bg")
+	bg[i].style.width = "100%";
+
+	var link = document.querySelectorAll("a");
+	link[i].style.color = "#000";
+
+	videoEl.play();
+
+}
+
+</script>
+
+</body>
+</html>
