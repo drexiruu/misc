@@ -59,15 +59,15 @@ a:hover{
 	transition: all 0.3s ease-in-out;
 }
 
-.uno{
+.haldenbg{
 	background-color: #ff00ff;
 }
 
-.dos{
+.fredrikstadbg{
 	background-color: #ffff00;
 }
 
-.tres{
+.fftbbg{
 	background-color: #00ffff;
 }
 
@@ -98,9 +98,9 @@ video{
 
 <div id="innpakning">
 	<div id="knapper">
-		<a href="#" onclick="visVideo('halden')">Halden <div class="bg uno"></div> </a>
-		<a href="#" onclick="visVideo('fredrikstad')">Fredrikstad <div class="bg dos"></div> </a>
-		<a href="#" onclick="visVideo('fftb')">Fra fjord til bord <div class="bg tres"></div> </a>
+		<a href="#" onclick="visVideo('halden')">Halden <div class="bg haldenbg"></div> </a>
+		<a href="#" onclick="visVideo('fredrikstad')">Fredrikstad <div class="bg fredrikstadbg"></div> </a>
+		<a href="#" onclick="visVideo('fftb')">Fra fjord til bord <div class="bg fftbbg"></div> </a>
 	</div>
 	<div id="videobox">
 		<video id="vid" controls>
@@ -119,6 +119,19 @@ function visVideo(navn) {
 	videoEl.src = navn + ".mp4";
 	videoEl.style.display = "block";
 
+	/*
+	var bgWidth = document.querySelector("." + navn + "bg");
+
+	if (bgWidth.style.width = "0") {
+		bgWidth.style.width = "100%";
+	} else {
+		bgWidth.style.width = "0px";
+	};
+	*/
+
+	event.currentTarget.style.color = "#00ff00";
+
+	/*
 	var i = 0;
 
 	if (navn == "halden") {
@@ -134,10 +147,28 @@ function visVideo(navn) {
 
 	var link = document.querySelectorAll("a");
 	link[i].style.color = "#000";
+	*/
 
-	videoEl.play();
+	videoEl.play(); // spiller av videoen
 
 }
+
+
+/*
+function showMember(evt, memberName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("water");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("charmander");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(memberName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+*/
 
 </script>
 
