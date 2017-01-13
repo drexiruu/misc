@@ -77,7 +77,7 @@ video{
 <div id="innpakning">
 	<div id="videobox">
 		<video id="vid" controls>
-			<source src="fredrikstad.mp4" type="video/mp4">
+			<source src="" type="video/mp4">
 			Din nettleser støtter ikke video-elementet. <!-- if playback error -->
 		</video>
 	</div>
@@ -94,10 +94,13 @@ function visVideo(event, videoNavn) {
 
     var i, videoEl, linksEl;
 
+    // viser videoen
     videoEl = document.getElementById("vid");
     videoEl.src = videoNavn + ".mp4";
     videoEl.style.visibility = "visible";
 
+
+    // bytter fargene på lenkene
     linksEl = document.getElementsByClassName("link");
     for (i = 0; i < 3; i++) {
         linksEl[i].className = linksEl[i].className.replace(" active", "");
