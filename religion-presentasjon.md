@@ -11,8 +11,7 @@ Muhammads flukt(hijra) fra Mekka til Medina ble noen år senere tatt som utgangs
 
 # Muhammed i Yathrib
 Kort tid etter flukten red Muhammed inn i oasen Yathrib.  
-Her fikk Muhammad en mottagelse som sto i skarp kontrast til hjembyens forfølgelser.  
-Oasens ledere og folket ønsket ham velkommen.  
+Oasens ledere og innbyggere ønsket ham velkommen.  
 
 # Konflikter
 Det skulle vise seg at den politiske situasjonen i oasen ikke var bedre enn i Mekka.  
