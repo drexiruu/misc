@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ILLUMIN8D</title>
+
+<style type="text/css">
+
+body{
+	margin: 0;
+	font-size: 16px;
+	background-color: #000;
+	transition: all 0.5s ease-in-out;
+}
+
+#container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#shape{
+	z-index: 3;
+	transition: all 0.5s ease-in-out;
+}
+
+#knapp{
+	margin-top: 50px;
+	border: 2px solid #769F63;
+	outline: none;
+	padding: 10px;
+	background-color: #769F63;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+#knapp:hover{
+	color: #769F63;
+	background-color: #000;
+}
+
+.illuminati{
+	width: 0;
+	height: 0;
+	border-left: 150px solid transparent;
+	border-right: 150px solid transparent;
+	border-bottom: 250px solid #769F63;
+}
+
+.pizza{
+	border-left: 150px solid transparent;
+	border-right: 150px solid transparent;
+	border-bottom: 200px solid #fffa77;
+	border-radius: 50%;
+}
+
+.crust{
+	position: absolute;
+	margin-top: -50px;
+	border-left: 180px solid transparent;
+	border-right: 180px solid transparent;
+
+	border-bottom: 200px solid #ffa24a;
+	border-radius: 50%;
+	opacity: 0;
+	z-index: 2;
+	transition: all 0.5s ease-in-out;
+}
+
+#eye{
+	position: absolute;
+	z-index: 5;
+	transition: all 0.3s ease-in-out;
+}
+
+#eye img{
+	width: 100px;
+}
+
+#toppings{
+	position: absolute;
+	margin-top: -10px;
+	opacity: 0;
+	z-index: 4;
+	transition: all 0.5s ease-in-out;
+}
+
+#toppings img{
+	width: 200px;
+}
+
+#message{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background-image: url('http://cdn0.dailydot.com/uploaded/images/original/2015/6/26/rainbow_gif1.gif');
+	background-attachment: fixed;
+	background-size: cover;
+	visibility: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s ease-in-out;
+	transition-delay: 0.5s;
+}
+
+.text{
+	margin-top: 250px;
+	text-align: center;
+	font-family: "Calibri", sans-serif;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="eye"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/96280-200.png"></div>
+	<div id="toppings"><img src="http://www.zielonymelonik.pl/img/kreator/pepperoni.png"></div>
+	<div id="shape" class="illuminati"></div>
+	<div id="shape2" class="crust"></div>
+	<button id="knapp" onclick="pizzafy()">GET ILLUMINATED</button>
+	<div id="message"><span class="text">ILLUMINATI = PIZZA CONFIRMED</span></div>
+</div>
+
+<script type="text/javascript">
+	
+var knappEl = document.querySelector("#knapp");
+var shapeEl = document.querySelector("#shape");
+var eyeEl = document.querySelector("#eye");
+var toppingsEl = document.querySelector("#toppings");	
+var messageEl = document.querySelector("#message");
+var crustEl = document.querySelector("#shape2");
+
+function pizzafy() {
+	eyeEl.style.opacity = "0";
+	toppingsEl.style.opacity = "1";
+	shapeEl.className -= "illuminati";
+	shapeEl.className += " pizza";
+	messageEl.style.visibility = "visible";
+	crustEl.style.marginTop = "-15px";
+	crustEl.style.opacity = "1";
+	document.body.style.backgroundColor = "#fff";
+};
+
+</script>
+
+</body>
+</html>
