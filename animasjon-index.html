@@ -34,6 +34,10 @@ a:hover{
 	background-color: transparent;
 }
 
+.fa{
+	z-index: 9999999;
+}
+
 .flex{
 	display: flex;
 	flex-flow: row wrap;
@@ -57,10 +61,11 @@ a:hover{
 	width: 100%;
 	height: calc(100vh);
 	background-color: #ffff00;
-	background-image: url('bildefiler/illuminati-bg.png');
+	background-image: url('illuminati-bg.png');
 	background-size: cover;
 	background-position: center;
 	color: #fff;
+	transition: all 0.7s ease-in-out;
 }
 
 #overlay{
@@ -74,11 +79,28 @@ a:hover{
 	font-size: 3em;
 }
 
+h1{
+	position: relative;
+	top: 120px;
+	margin: 0;
+	padding: 10px;
+	border: 2px solid #fff;
+	background-color: rgba(58, 42, 29, 0.7);
+}
+
+.introtext{
+	position: relative;
+	top: 125px;
+	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
 .up{
-	border-right: 2px solid #fff;
-	border-left: 2px solid #fff;
-	border-top: 2px solid #fff;
+	position: relative;
+	top: 200px;
 	padding: 20px 25px;
+	border: 2px solid #fff;
+	border-radius: 50%;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 }
@@ -86,6 +108,23 @@ a:hover{
 .up:hover{
 	color: #3A2A1D; /* 3A2A1D */
 	background-color: #fff;
+}
+
+.down{
+	/*position: fixed;
+	top: 10px;
+	left: 10px;*/
+	color: #DAB975;
+	padding: 5px 10px;
+	border: 1px solid #DAB975;
+	opacity: 0;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in-out 0.5s, color 0.3s, background-color 0.3s;
+}
+
+.down:hover{
+	color: #111;
+	background-color: #DAB975;
 }
 
 #meny{
@@ -98,6 +137,71 @@ a:hover{
 	width: 100%;
 	height: calc(100vh - 50px);
 	background-color: #fff;
+	flex-flow: column wrap;
+	background-image: url('https://31.media.tumblr.com/b46ceb559a4e2b70dce7d4558c28343f/tumblr_inline_n0onpo7siJ1rshr70.jpg');
+}
+
+.del2{
+	width: 100%;
+}
+
+.tri{
+	width: 0;
+	height: 0;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-bottom: 150px solid #DAB975;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.tri2{
+	width: 0;
+	height: 0;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-top: 150px solid #DAB975;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.zero{
+	position: relative;
+	top: -10px;
+}
+
+.one{
+	margin-right: -85px;
+	margin-top: 20px;
+	z-index: 3;
+}
+
+.three{
+	margin-left: -85px;
+	margin-top: 20px;
+	z-index: 3;
+}
+
+.tri:hover,
+.tri2:hover{
+	transform: rotateY(180deg);
+}
+
+.del2 span{
+	color: #111;
+	font-size: 1.8em;
+	position: absolute;
+	top: 400px;
+}
+
+.creds{
+	position: fixed;
+	bottom: 10px;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	color: #DAB975;
+	opacity: 0;
+	transition: all 0.3s ease-in-out 0.3s;
 }
 
 </style>
@@ -108,56 +212,41 @@ a:hover{
 <div id="innpakning" class="flex centered">
 	<div id="header-index">
 		<div id="overlay" class="flex centered">
-			<h1>CSS</h1>
-			<div class="introtext">animasjoner, transformasjoner og transisjoner</div>
-			<div class="up"><span class="fa fa-angle-double-down fa-lg"></span></div>
+			<h1>CSS ANIMASJONER</h1>
+			<div class="introtext">innleveringsoppgave 15.02.2017</div>
+			<div class="up" onclick="scrollDown()"><span class="fa fa-angle-double-down fa-lg"></span></div>
 		</div>
 	</div>
 	<div id="meny" class="flex centered">
-		<a href="index.html">index</a>
-		<a href="trillebar.html">trillebår</a>
-		<a href="sol.html">sol</a>
-		<a href="tannhjul.html">tannhjul</a>
-		<a href="skalvekt.html">skålvekt</a>
+		<div class="down" onclick="scrollUp()"><span class="fa fa-angle-double-up fa-lg"></span></div>
 	</div>
-	<div id="hoveddel">
-		
-	</div>
+	<div id="hoveddel" class="flex centered">
+		<div class="tri zero"></div>
+		<div class="del2 flex centered">
+			<div class="tri one"></div>
+				<!--<span class="fa fa-balance-scale"></span>-->
+			<div class="tri2"></div>
+			<div class="tri three"></div>
+		</div>
+		<div class="creds">©2017 Zandrex Camagon. All rights reserved.</div>
+	</div> <!-- /hoveddel -->
 </div>
-
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 
-$(document).ready(function(){ 
-$(window).bind('scroll', function(){
- if($(window).scrollTop() > 10 ){
- $('.introtext').css({opacity: '0'});  
- }
+function scrollDown() {
+	document.querySelector("#header-index").style.marginTop = "-100vh";
+	document.querySelector(".up").style.opacity = "0";
+	document.querySelector(".down").style.opacity = "1";
+	document.querySelector(".creds").style.opacity = "1";
+}
 
- else{
- $('.introtext').css({opacity: '1'});
- }
- });
-});
-
-$(document).ready(function($){
-
-  $upwards = $('.up');
-  $scrollHeight = $('#header-index').height();
-
-  $upwards.on('click', function(event){
-    event.preventDefault();
-    $('body,html').animate({
-      scrollTop: $('#header-index').offset().top+$scrollHeight ,
-      }, 700
-    );
-  });
-
-});
+function scrollUp() {
+	document.querySelector("#header-index").style.marginTop = "0px";
+	document.querySelector(".up").style.opacity = "1";
+	document.querySelector(".down").style.opacity = "0";
+	document.querySelector(".creds").style.opacity = "0";
+}
 
 </script>
 
