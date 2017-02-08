@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Animasjoner med CSS</title>
 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style type="text/css">
 	
 body{
@@ -12,23 +14,24 @@ body{
 	font-family: "Calibri", sans-serif;
 	font-size: 16px;
 	letter-spacing: 1px;
+	overflow: hidden;
 }
 
 a{
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: bold;
-	color: #ffff00;
+	color: #111;
 	padding: 5px 20px;
-	background-color: transparent;
-	border: 1px solid #ffff00;
+	background-color: #DAB975;
+	border: 1px solid #DAB975;
 	margin: 0px 10px;
 	transition: all 0.3s ease-in-out;
 }
 
 a:hover{
-	color: #111;
-	background-color: #ffff00;
+	color: #DAB975;
+	background-color: transparent;
 }
 
 .flex{
@@ -50,10 +53,39 @@ a:hover{
 	height: 100vh;
 }
 
-#header{
+#header-index{
 	width: 100%;
-	height: 150px;
+	height: calc(100vh);
 	background-color: #ffff00;
+	background-image: url('bildefiler/illuminati-bg.png');
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+}
+
+#overlay{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	flex-flow: column wrap;
+}
+
+#overlay span{
+	font-size: 3em;
+}
+
+.up{
+	border-right: 2px solid #fff;
+	border-left: 2px solid #fff;
+	border-top: 2px solid #fff;
+	padding: 20px 25px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.up:hover{
+	color: #3A2A1D; /* 3A2A1D */
+	background-color: #fff;
 }
 
 #meny{
@@ -64,22 +96,8 @@ a:hover{
 
 #hoveddel{
 	width: 100%;
-	height: calc(100vh - 200px);
+	height: calc(100vh - 50px);
 	background-color: #fff;
-}
-
-#hjul{
-	animation-name: roter;
-    animation-duration: 3s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count:infinite;
-}
-
-@keyframes roter {
-    0%   {transform: rotate(360deg); margin-top: -20%; margin-left: -50%;}
-    33% {transform: rotate(-360deg); margin-top: -20%; margin-left: 50%;}
-    67%  {transform: rotate(360deg); margin-top: 20%; margin-left: 0%;}
-    100%   {transform: rotate(-360deg); margin-top: -20%; margin-left: -50%;}
 }
 
 </style>
@@ -88,18 +106,60 @@ a:hover{
 <body>
 
 <div id="innpakning" class="flex centered">
-	<div id="header"></div>
-	<div id="meny" class="flex centered">
-		<a href="#">index</a>
-		<a href="#">Oppgave A</a>
-		<a href="#">Oppgave B</a>
-		<a href="#">Oppgave C</a>
-		<a href="#">Oppgave D</a>
+	<div id="header-index">
+		<div id="overlay" class="flex centered">
+			<h1>CSS</h1>
+			<div class="introtext">animasjoner, transformasjoner og transisjoner</div>
+			<div class="up"><span class="fa fa-angle-double-down fa-lg"></span></div>
+		</div>
 	</div>
-	<div id="hoveddel" class="flex centered">
-		<img src="bildefiler/sol.png" id="hjul" width="150px">
+	<div id="meny" class="flex centered">
+		<a href="index.html">index</a>
+		<a href="trillebar.html">trillebår</a>
+		<a href="sol.html">sol</a>
+		<a href="tannhjul.html">tannhjul</a>
+		<a href="skalvekt.html">skålvekt</a>
+	</div>
+	<div id="hoveddel">
+		
 	</div>
 </div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){ 
+$(window).bind('scroll', function(){
+ if($(window).scrollTop() > 10 ){
+ $('.introtext').css({opacity: '0'});  
+ }
+
+ else{
+ $('.introtext').css({opacity: '1'});
+ }
+ });
+});
+
+$(document).ready(function($){
+
+  $upwards = $('.up');
+  $scrollHeight = $('#header-index').height();
+
+  $upwards.on('click', function(event){
+    event.preventDefault();
+    $('body,html').animate({
+      scrollTop: $('#header-index').offset().top+$scrollHeight ,
+      }, 700
+    );
+  });
+
+});
+
+</script>
 
 </body>
 </html>
