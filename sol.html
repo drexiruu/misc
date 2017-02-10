@@ -237,8 +237,9 @@ h1{
 #info{
 	width: 200px;
 	padding: 25px 25px 0px 25px;
-	color: #111;
-	background-color: #DAB975;
+	color: #DAB975;
+	background-color: #111;
+	border: 10px double #DAB975;
 	flex-flow: column wrap;
 }
 
@@ -253,37 +254,39 @@ h1{
 
 #info i{
 	font-style: normal;
-	font-size: 0.9em;
+	font-size: 0.7em;
+	text-transform: uppercase;
 }
 
 #info p{
 	font-size: 0.9em;
-	line-height: 1;
+	text-align: center;
 	margin: 20px 0 30px 0;
 }
 
 #info a{
 	text-decoration: none;
-	color: #DAB975;
+	font-weight: bold;
+	color: #111;
 	padding: 5px 20px;
-	background-color: #111;
-	border: 1px solid #111;
+	background-color: #DAB975;
+	border: 1px solid #DAB975;
 	transition: all 0.3s ease-in-out;
 }
 
 #info a:hover{
-	color: #111;
+	color: #DAB975;
 	background-color: transparent;
 }
 
 #info button{
 	position: relative;
-	top: -260px;
+	top: -270px;
 	left: 100px;
 	width: 25px;
 	height: 25px;
 	padding: 5px;
-	border: 1px solid #111;
+	border: 1px solid #DAB975;
 	margin-top: 10px;
 	color: #DAB975;
 	background-color: #111;
@@ -294,7 +297,7 @@ h1{
 #info button:hover{
 	outline: none;
 	color: #111;
-	background-color: transparent;
+	background-color: #DAB975;
 }
 
 #info button span{
@@ -352,7 +355,7 @@ h1{
 				<b>SOL</b>
 				<i>oppgave b</i>
 				<p>Lag en animasjon av en sol som roterer og beveger seg over skjermen.</p>
-				<a href="sol.html">GÅ</a>
+				<a href="sol.html"><i class="fa fa-hand-o-right"></i></a>
 				<button onclick="lukkInfo()"><span class="fa fa-times"></span></button>
 			</div>
 		</div> <!-- /popup -->
@@ -387,10 +390,12 @@ function mOutRoter(id) {
 }
 
 function visInfo() {
+	document.querySelector("#info").style.visibility = "visible";
 	document.querySelector("#popup").style.visibility = "visible";
 }
 
 function lukkInfo() {
+	document.querySelector("#info").style.visibility = "hidden";
 	document.querySelector("#popup").style.visibility = "hidden";
 }
 
