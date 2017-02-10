@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Animasjoner med CSS</title>
 
+<!-- font awesome library -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style type="text/css">
 	
 body{
@@ -15,21 +18,8 @@ body{
 	overflow: hidden;
 }
 
-a{
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: #ffff00;
-	padding: 5px 20px;
-	background-color: transparent;
-	border: 1px solid #ffff00;
-	margin: 0px 10px;
-	transition: all 0.3s ease-in-out;
-}
-
-a:hover{
-	color: #111;
-	background-color: #ffff00;
+.fa{
+	z-index: 9999999;
 }
 
 .flex{
@@ -51,10 +41,74 @@ a:hover{
 	height: 100vh;
 }
 
-#header{
+#header-index{
 	width: 100%;
-	height: 100px;
+	height: calc(100vh);
 	background-color: #ffff00;
+	background-image: url('bildefiler/illuminati-bg.png');
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+	transition: all 0.7s ease-in-out;
+}
+
+#overlay{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	flex-flow: column wrap;
+}
+
+#overlay span{
+	font-size: 3em;
+}
+
+h1{
+	position: relative;
+	top: 120px;
+	margin: 0;
+	padding: 10px;
+	border: 2px solid #fff;
+	background-color: rgba(58, 42, 29, 0.7);
+}
+
+.introtext{
+	position: relative;
+	top: 125px;
+	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
+.up{
+	position: relative;
+	top: 200px;
+	padding: 20px 25px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.up:hover{
+	color: #3A2A1D; /* 3A2A1D */
+	background-color: #fff;
+}
+
+.down{
+	/*position: fixed;
+	top: 10px;
+	left: 10px;*/
+	color: #DAB975;
+	padding: 5px 10px;
+	border: 1px solid #DAB975;
+	opacity: 0;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in-out 0.5s, color 0.3s, background-color 0.3s;
+}
+
+.down:hover{
+	color: #111;
+	background-color: #DAB975;
 }
 
 #meny{
@@ -65,56 +119,196 @@ a:hover{
 
 #hoveddel{
 	width: 100%;
-	height: calc(100vh - 150px);
-	background-color: #000;
-	animation: byttFarge 5s linear 1s infinite;
+	height: calc(100vh - 50px);
+	background-color: #fff;
+	flex-flow: column wrap;
+	background-image: url('https://31.media.tumblr.com/b46ceb559a4e2b70dce7d4558c28343f/tumblr_inline_n0onpo7siJ1rshr70.jpg');
 }
 
-#bakken{
-	position: fixed;
-	bottom: 0;
+#links{
 	width: 500px;
-	height: 170px;
-	background-color: #000;
-	border-top: 2px solid #ffff00;
-	animation: byttFarge 5s linear 1s infinite;
+	z-index: 99;
 }
 
-#bakken img{
+#links a{
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
+	padding: 15px 20px;
+	background-color: transparent;	
+	border: 2px solid #fff;
+	border-radius: 50%;
+	margin: 0px 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+#links a:hover{
+	color: #DAB975;
+	background-color: #fff;
+}
+
+#links a:nth-child(1){
+	position: relative;
+	top: 90px;
+	left: calc(50% - 40px);
+}
+
+#links a:nth-child(2){
+	position: relative;
+	top: 275px;
+	left: 10px;
+}
+
+#links a:nth-child(3){
+	position: relative;
+	top: 275px;
+	left: 158px;
+}
+
+#links a:nth-child(4){
+	position: relative;
+	top: 225px;
+	left: -48px;
+}
+
+#triangles{
+	width: 500px;
+}
+
+.bottomtri{
+	width: 100%;
+}
+
+.tri{
+	width: 0;
+	height: 0;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-bottom: 150px solid #DAB975;
+	transition: all 0.3s ease-in-out;
+}
+
+.tri2{
+	width: 0;
+	height: 0;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-top: 150px solid #DAB975;
+	transition: all 0.3s ease-in-out;
+}
+
+.zero{
+	position: relative;
+	top: -10px;
+}
+
+.one{
+	margin-right: -85px;
+	margin-top: 20px;
+	z-index: 3;
+}
+
+.three{
+	margin-left: -85px;
+	margin-top: 20px;
+	z-index: 3;
+}
+
+.bottomtri span{
+	color: #111;
+	font-size: 1.8em;
 	position: absolute;
-	top: -100px;
-	left: -10px;
+	top: 400px;
 }
 
-#sol{
-    animation: roter 5s linear 0s infinite;
+#popup{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	visibility: hidden;
+	transition: all 0.3s ease-in-out;
 }
 
-#mane{
-	animation: roter 5s linear 0s infinite;
+#info{
+	width: 200px;
+	padding: 25px 25px 0px 25px;
+	color: #111;
+	background-color: #DAB975;
+	flex-flow: column wrap;
 }
 
-@keyframes roter {
-    0%   {transform: rotate(360deg);}
+#info span{
+	font-size: 3em;
+	margin-bottom: 20px;
 }
 
-#solsystemet{
-	width: 500px;
-	height: 500px;
+#info b{
+	font-size: 1.5em;
+}
+
+#info i{
+	font-style: normal;
+	font-size: 0.9em;
+}
+
+#info p{
+	font-size: 0.9em;
+	line-height: 1;
+	margin: 20px 0 30px 0;
+}
+
+#info a{
+	text-decoration: none;
+	color: #DAB975;
+	padding: 5px 20px;
+	background-color: #111;
+	border: 1px solid #111;
+	transition: all 0.3s ease-in-out;
+}
+
+#info a:hover{
+	color: #111;
 	background-color: transparent;
-	justify-content: space-between;
-	align-items: center;
-	animation: roterHele 5s linear 0s infinite;
 }
 
-@keyframes roterHele {
-	0% {transform: rotate(360deg);}
+#info button{
+	position: relative;
+	top: -260px;
+	left: 100px;
+	width: 25px;
+	height: 25px;
+	padding: 5px;
+	border: 1px solid #111;
+	margin-top: 10px;
+	color: #DAB975;
+	background-color: #111;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
 }
 
-@keyframes byttFarge {
-	0%   {background-color: #000;}
-	50%  {background-color: #fff;}
-	100% {background-color: #000;}
+#info button:hover{
+	outline: none;
+	color: #111;
+	background-color: transparent;
+}
+
+#info button span{
+	font-size: 1em;
+}
+
+.creds{
+	position: fixed;
+	bottom: 10px;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	color: #DAB975;
+	opacity: 0;
+	transition: all 0.3s ease-in-out 0.3s;
 }
 
 </style>
@@ -123,24 +317,84 @@ a:hover{
 <body>
 
 <div id="innpakning" class="flex centered">
-	<div id="header"></div>
+	<div id="header-index">
+		<div id="overlay" class="flex centered">
+			<h1>CSS ANIMASJONER</h1>
+			<div class="introtext">innleveringsoppgave 15.02.2017</div>
+			<div class="up" onclick="scrollDown()"><span class="fa fa-angle-double-down fa-lg"></span></div>
+		</div>
+	</div>
 	<div id="meny" class="flex centered">
-		<a href="index.html">index</a>
-		<a href="trillebar.html">trillebår</a>
-		<a href="sol.html">sol</a>
-		<a href="tannhjul.html">tannhjul</a>
-		<a href="skalvekt.html">skålvekt</a>
+		<div class="down" onclick="scrollUp()"><span class="fa fa-angle-double-up fa-lg"></span></div>
 	</div>
 	<div id="hoveddel" class="flex centered">
-		<div id="solsystemet" class="flex">
-			<img src="bildefiler/sol.png" id="sol" width="150px">
-			<img src="http://images.clipartpanda.com/moon-clip-art-moon-clip-art-11.gif" id="mane" width="100px">
+		<div id="links">
+			<a href="#" onmouseover="mOverRoter('zero')" onmouseout="mOutRoter('zero')" onclick="visInfo('zero')">
+				<span class="fa fa-wheelchair-alt"></span></a>
+			<a href="#" onmouseover="mOverRoter('one')" onmouseout="mOutRoter('one')" onclick="visInfo('one')">
+				<span class="fa fa-sun-o"></span></a>
+			<a href="#" onmouseover="mOverRoter('three')" onmouseout="mOutRoter('three')" onclick="visInfo('three')">
+				<span class="fa fa-cogs"></span></a>
+			<a href="#" onmouseover="mOverRoter('two')" onmouseout="mOutRoter('two')" onclick="visInfo('two')">
+				<span class="fa fa-balance-scale"></span></a>
 		</div>
-		<div id="bakken">
-			<img src="http://images.clipartpanda.com/grass-clipart-transparent-grass-clipart-free-clip-art-images.png" id="gress" width="510px">
-		</div>
-	</div>
+		<div id="triangles" class="flex centered">
+			<div class="tri zero"></div>
+			<div class="bottomtri flex centered">
+				<div class="tri one"></div>
+				<div class="tri2 two"></div>
+				<div class="tri three"></div>
+			</div>
+		</div> <!-- /triangles -->
+		<div id="popup" class="flex centered">
+			<div id="info" class="flex centered">
+				<span class="fa fa-sun-o"></span>
+				<b>SOL</b>
+				<i>oppgave b</i>
+				<p>Lag en animasjon av en sol som roterer og beveger seg over skjermen.</p>
+				<a href="sol.html">GÅ</a>
+				<button onclick="lukkInfo()"><span class="fa fa-times"></span></button>
+			</div>
+		</div> <!-- /popup -->
+		<div class="creds">©2017 Zandrex Camagon. All rights reserved.</div>
+	</div> <!-- /hoveddel -->
 </div>
+
+<script type="text/javascript">
+
+function scrollDown() {
+	document.querySelector("#header-index").style.marginTop = "-100vh";
+	document.querySelector(".up").style.opacity = "0";
+	document.querySelector(".down").style.opacity = "1";
+	document.querySelector(".creds").style.opacity = "1";
+}
+
+function scrollUp() {
+	document.querySelector("#header-index").style.marginTop = "0px";
+	document.querySelector(".up").style.opacity = "1";
+	document.querySelector(".down").style.opacity = "0";
+	document.querySelector(".creds").style.opacity = "0";
+}
+
+function mOverRoter(id) {
+	var trekant = document.querySelector('.'+id);
+	trekant.style.transform = "rotateY(180deg)";
+}
+
+function mOutRoter(id) {
+	var trekant = document.querySelector('.'+id);
+	trekant.style.transform = "rotateY(0deg)";
+}
+
+function visInfo() {
+	document.querySelector("#popup").style.visibility = "visible";
+}
+
+function lukkInfo() {
+	document.querySelector("#popup").style.visibility = "hidden";
+}
+
+</script>
 
 </body>
 </html>
