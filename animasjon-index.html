@@ -4,38 +4,18 @@
 	<meta charset="UTF-8">
 	<title>Animasjoner med CSS</title>
 
+<!-- font awesome library -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style type="text/css">
-	
+
 body{
 	margin: 0;
-	color: #333;
+	color: #111;
 	font-family: "Calibri", sans-serif;
 	font-size: 16px;
 	letter-spacing: 1px;
 	overflow: hidden;
-}
-
-a{
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: #111;
-	padding: 5px 20px;
-	background-color: #DAB975;
-	border: 1px solid #DAB975;
-	margin: 0px 10px;
-	transition: all 0.3s ease-in-out;
-}
-
-a:hover{
-	color: #DAB975;
-	background-color: transparent;
-}
-
-.fa{
-	z-index: 9999999;
 }
 
 .flex{
@@ -57,6 +37,8 @@ a:hover{
 	height: 100vh;
 }
 
+
+/* ========================================== HEADER ========================================== */
 #header-index{
 	width: 100%;
 	height: calc(100vh);
@@ -102,18 +84,22 @@ h1{
 	border: 2px solid #fff;
 	border-radius: 50%;
 	cursor: pointer;
-	transition: all 0.3s ease-in-out;
 }
 
 .up:hover{
-	color: #3A2A1D; /* 3A2A1D */
+	color: #3A2A1D;
 	background-color: #fff;
 }
 
+
+/* ========================================== MENY ========================================== */
+#meny{
+	width: 100%;
+	height: 50px;
+	background-color: #111;
+}
+
 .down{
-	/*position: fixed;
-	top: 10px;
-	left: 10px;*/
 	color: #DAB975;
 	padding: 5px 10px;
 	border: 1px solid #DAB975;
@@ -127,12 +113,8 @@ h1{
 	background-color: #DAB975;
 }
 
-#meny{
-	width: 100%;
-	height: 50px;
-	background-color: #111;
-}
 
+/* ========================================== HOVEDDEL ========================================== */
 #hoveddel{
 	width: 100%;
 	height: calc(100vh - 50px);
@@ -141,59 +123,179 @@ h1{
 	background-image: url('https://31.media.tumblr.com/b46ceb559a4e2b70dce7d4558c28343f/tumblr_inline_n0onpo7siJ1rshr70.jpg');
 }
 
-.del2{
+/* ===================== LINKER ===================== */ 
+#links{
+	width: 500px;
+	z-index: 99;
+}
+
+#links a{
+	font-size: 1.5em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
+	padding: 10px 15px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	margin: 0px 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+#links a:hover{
+	color: #DAB975;
+	background-color: #111;
+	border-color: #DAB975;
+}
+
+#links a:nth-child(1){
+	position: relative;
+	top: 100px;
+	left: calc(50% - 40px);
+}
+
+#links a:nth-child(2){
+	position: relative;
+	top: 275px;
+	left: 30px;
+}
+
+#links a:nth-child(3){
+	position: relative;
+	top: 275px;
+	left: 140px;
+}
+
+#links a:nth-child(4){
+	position: relative;
+	top: 225px;
+	left: calc(-10% + 5px);
+}
+
+/* ===================== TREKANTER ===================== */ 
+#triangles{
+	width: 500px;
+}
+
+.bottomtri{
 	width: 100%;
 }
 
 .tri{
 	width: 0;
 	height: 0;
-	border-left: 100px solid transparent;
-	border-right: 100px solid transparent;
-	border-bottom: 150px solid #DAB975;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
-}
-
-.tri2{
-	width: 0;
-	height: 0;
-	border-left: 100px solid transparent;
-	border-right: 100px solid transparent;
-	border-top: 150px solid #DAB975;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+	border-style: solid;
 }
 
 .zero{
 	position: relative;
-	top: -10px;
+	top: 0px;
 }
 
 .one{
-	margin-right: -85px;
+	margin-right: -80px;
 	margin-top: 20px;
-	z-index: 3;
+}
+
+.two{
+	border-width: 151.6px 87.5px 0 87.5px;
+	border-color: #DAB975 transparent transparent transparent;
 }
 
 .three{
-	margin-left: -85px;
+	margin-left: -80px;
 	margin-top: 20px;
-	z-index: 3;
 }
 
-.tri:hover,
-.tri2:hover{
-	transform: rotateY(180deg);
+.zero, .one, .three{
+	border-width: 0 87.5px 151.6px 87.5px;
+	border-color: transparent transparent #DAB975 transparent;
 }
 
-.del2 span{
+/* ===================== POP-UP ===================== */ 
+#popup{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	display: none;
+}
+
+#info{
+	position: relative;
+	width: 200px;
+	padding: 25px;
+	color: #DAB975;
+	background-color: #111;
+	border: 7px double #DAB975;
+	flex-flow: column wrap;
+}
+
+#info span{
+	font-size: 3em;
+	margin-bottom: 20px;
+}
+
+#info h2{
+	font-size: 1.5em;
+	margin: 0;
+}
+
+#info i{
+	font-style: normal;
+	font-size: 0.7em;
+	text-transform: uppercase;
+}
+
+#info p{
+	font-size: 0.9em;
+	text-align: center;
+	margin: 20px 0 30px 0;
+}
+
+#info a{
+	text-decoration: none;
+	font-weight: bold;
 	color: #111;
-	font-size: 1.8em;
-	position: absolute;
-	top: 400px;
+	padding: 5px 20px;
+	background-color: #DAB975;
+	border: 1px solid #DAB975;
+	transition: all 0.3s ease-in-out;
 }
 
+#info a:hover{
+	color: #DAB975;
+	background-color: transparent;
+}
+
+#info button{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 25px;
+	height: 25px;
+	padding: 5px;
+	border: 1px solid #DAB975;
+	color: #DAB975;
+	background-color: #111;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+#info button:hover{
+	outline: none;
+	color: #111;
+	background-color: #DAB975;
+}
+
+#info button span{
+	font-size: 1em;
+}
+
+/* ===================== CREDS <3 ===================== */ 
 .creds{
 	position: fixed;
 	bottom: 10px;
@@ -201,7 +303,6 @@ h1{
 	text-transform: uppercase;
 	color: #DAB975;
 	opacity: 0;
-	transition: all 0.3s ease-in-out 0.3s;
 }
 
 </style>
@@ -214,23 +315,53 @@ h1{
 		<div id="overlay" class="flex centered">
 			<h1>CSS ANIMASJONER</h1>
 			<div class="introtext">innleveringsoppgave 15.02.2017</div>
-			<div class="up" onclick="scrollDown()"><span class="fa fa-angle-double-down fa-lg"></span></div>
+			<div class="up transitioned" onclick="scrollDown()"><span class="fa fa-angle-double-down fa-lg"></span></div>
 		</div>
 	</div>
+
 	<div id="meny" class="flex centered">
 		<div class="down" onclick="scrollUp()"><span class="fa fa-angle-double-up fa-lg"></span></div>
 	</div>
+
 	<div id="hoveddel" class="flex centered">
-		<div class="tri zero"></div>
-		<div class="del2 flex centered">
-			<div class="tri one"></div>
-				<!--<span class="fa fa-balance-scale"></span>-->
-			<div class="tri2"></div>
-			<div class="tri three"></div>
+		<!-- LINKER -->
+		<div id="links">
+			<a href="#" onmouseover="mOverRoter('zero')" onmouseout="mOutRoter('zero')" onclick="visInfo('0')">
+				<span class="fa fa-shopping-cart"></span></a>
+			<a href="#" onmouseover="mOverRoter('one')" onmouseout="mOutRoter('one')" onclick="visInfo(1)">
+				<span class="fa fa-sun-o"></span></a>
+			<a href="#" onmouseover="mOverRoter('three')" onmouseout="mOutRoter('three')" onclick="visInfo('2')">
+				<span class="fa fa-cogs"></span></a>
+			<a href="#" onmouseover="mOverRoter('two')" onmouseout="mOutRoter('two')" onclick="visInfo('3')">
+				<span class="fa fa-balance-scale"></span></a>
 		</div>
-		<div class="creds">©2017 Zandrex Camagon. All rights reserved.</div>
+
+		<!-- TREKANTER -->
+		<div id="triangles" class="flex centered">
+			<div class="tri zero transitioned"></div>
+			<div class="bottomtri flex centered">
+				<div class="tri one transitioned"></div>
+				<div class="tri two transitioned"></div>
+				<div class="tri three transitioned"></div>
+			</div>
+		</div>
+
+		<!-- POP-UP BOKS -->
+		<div id="popup" class="flex centered">
+			<div id="info" class="flex centered">
+				<span class="fa fa-sun-o"></span>	<!-- symbol -->
+				<h2>SOL</h2>
+				<i>oppgave b</i>
+				<p>Lag en animasjon av en sol som roterer og beveger seg over skjermen.</p>
+				<a href="sol.html"><b class="fa fa-play"></b></a>
+				<button onclick="lukkInfo()"><span class="fa fa-times"></span></button> 	<!-- lukk-knapp -->
+			</div>
+		</div>
+
+		<!-- CREDS -->
+		<div class="creds transitioned">©2017 Zandrex Camagon. All rights reserved.</div>
 	</div> <!-- /hoveddel -->
-</div>
+</div> <!-- /innpakning -->
 
 <script type="text/javascript">
 
@@ -247,6 +378,79 @@ function scrollUp() {
 	document.querySelector(".down").style.opacity = "0";
 	document.querySelector(".creds").style.opacity = "0";
 }
+
+function mOverRoter(id) {
+	document.querySelector('.'+id).style.transform = "rotateY(180deg)";
+
+	if (id == 'two') {
+		document.querySelector('.'+id).style.borderColor = "#111 transparent transparent transparent";
+	} else{
+		document.querySelector('.'+id).style.borderColor = "transparent transparent #111 transparent";
+	};
+}
+
+function mOutRoter(id) {
+	document.querySelector('.'+id).style.transform = "rotateY(0deg)";
+
+	if (id == 'two') {
+		document.querySelector('.'+id).style.borderColor = "#DAB975 transparent transparent transparent";
+	} else{
+		document.querySelector('.'+id).style.borderColor = "transparent transparent #DAB975 transparent";
+	};
+}
+
+function visInfo(id) {
+	document.querySelector("#popup").style.display = "flex";
+
+	hentInfo(id);
+}
+
+function hentInfo(id) {
+
+	var infoArray = [
+		trillebar = {
+			symbol: "fa fa-shopping-cart",
+			navn: "TRILLEBÅR",
+			oppgave: "oppgave a",
+			beskrivelse: "Lag en animasjon som viser en trillebår som beveger seg. Hjulet på trillebåren skal gå rundt.",
+			link: "trillebar.html"
+			},
+		sol = {
+			symbol: "fa fa-sun-o",
+			navn: "SOL",
+			oppgave: "oppgave b",
+			beskrivelse: "Lag en animasjon av en sol som roterer og beveger seg over skjermen.",
+			link: "sol.html"
+			},
+		tannhjul = {
+			symbol: "fa fa-cogs",
+			navn: "TANNHJUL",
+			oppgave: "oppgave c + d",
+			beskrivelse: "Ta utgangspunkt i de tre tannhjulene og lag en animasjon der det røde tannhjulet roterer med klokken og de to sorte roterer mot klokken.",
+			link: "tannhjul.html"
+		},
+		skalvekt = {
+			symbol: "fa fa-balance-scale",
+			navn: "SKÅLVEKT",
+			oppgave: "oppgave e",
+			beskrivelse: "Lag en animasjon av en skålvekt. Å klikke på en av skålene representerer hendelsen legg en enhet i denne skåla. Når det legges en enhet i en skål skal vekta helle mot denne skålen, og slik fortsetter det hver gang en av skålene klikkes på.",
+			link: "skalvekt.html"
+		}
+	];
+
+	document.querySelector("#info > span").className = infoArray[id].symbol;
+	document.querySelector("#info > h2").innerHTML = infoArray[id].navn;
+	document.querySelector("#info > i").innerHTML = infoArray[id].oppgave;
+	document.querySelector("#info > p").innerHTML = infoArray[id].beskrivelse;
+	document.querySelector("#info > a").setAttribute('href', infoArray[id].link);
+
+}
+
+function lukkInfo() {
+	document.querySelector("#popup").style.display = "none";
+}
+
+/* ===== OPPGAVER INFO ===== */
 
 </script>
 
