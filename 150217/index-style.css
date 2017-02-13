@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css?family=Khand:400,700');
+
+::selection{
+	color: #fff;
+	background-color: #DAB975;
+}
+
+body{
+	margin: 0;
+	color: #111;
+	font-family: 'Khand', sans-serif;
+	font-size: 16px;
+	letter-spacing: 1px;
+	overflow: hidden;
+}
+
+.flex{
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.centered{
+	justify-content: center;
+	align-items: center;
+}
+
+.transitioned{
+	transition: all 0.3s ease-in-out;
+}
+
+#innpakning{
+	width: 100%;
+	height: 100vh;
+}
+
+
+/* ========================================== HEADER ========================================== */
+#header-index{
+	width: 100%;
+	height: calc(100vh);
+	background-color: #DAB975;
+	background-image: url('../bildefiler/illuminati-bg.png');
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+	transition: all 0.7s ease-in-out;
+}
+
+#overlay{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	flex-flow: column wrap;
+}
+
+#overlay span{
+	font-size: 3em;
+}
+
+h1{
+	position: relative;
+	top: 120px;
+	margin: 0;
+	padding: 10px;
+	border: 2px solid #fff;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.introtext{
+	position: relative;
+	top: 125px;
+	text-transform: uppercase;
+	font-size: 1em;
+}
+
+.up{
+	position: relative;
+	top: 200px;
+	padding: 20px 25px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.up:hover{
+	color: #3A2A1D;
+	background-color: #fff;
+}
+
+
+/* ========================================== MENY ========================================== */
+#meny{
+	width: 100%;
+	height: 50px;
+	background-color: #111;
+}
+
+.down{
+	color: #DAB975;
+	padding: 5px 12px;
+	border: 1px solid #DAB975;
+	opacity: 0;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in-out 0.5s, color 0.3s, background-color 0.3s;
+}
+
+.down:hover{
+	color: #111;
+	background-color: #DAB975;
+}
+
+
+/* ========================================== HOVEDDEL ========================================== */
+#hoveddel{
+	width: 100%;
+	height: calc(100vh - 50px);
+	background-color: #fff;
+	flex-flow: column wrap;
+	background-image: url('../bildefiler/bg-pattern.jpg');
+}
+
+/* ===================== LINKER ===================== */ 
+#links{
+	width: 500px;
+	z-index: 99;
+}
+
+#links a{
+	font-size: 1.5em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
+	padding: 10px 15px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	margin: 0px 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+#links a:hover{
+	color: #DAB975;
+	background-color: #111;
+	border-color: #DAB975;
+}
+
+#links a:nth-child(1){
+	position: relative;
+	top: 115px;
+	left: calc(50% - 40px);
+}
+
+#links a:nth-child(2){
+	position: relative;
+	top: 285px;
+	left: 35px;
+}
+
+#links a:nth-child(3){
+	position: relative;
+	top: 285px;
+	left: 140px;
+}
+
+#links a:nth-child(4){
+	position: relative;
+	top: 230px;
+	left: calc(-10% + 7px);
+}
+
+/* ===================== TREKANTER ===================== */ 
+#triangles{
+	width: 500px;
+}
+
+.bottomtri{
+	width: 100%;
+}
+
+.tri{
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+
+.zero{
+	position: relative;
+	top: 0px;
+}
+
+.one{
+	margin-right: -80px;
+	margin-top: 20px;
+}
+
+.two{
+	border-width: 151.6px 87.5px 0 87.5px;
+	border-color: #DAB975 transparent transparent transparent;
+}
+
+.three{
+	margin-left: -80px;
+	margin-top: 20px;
+}
+
+.zero, .one, .three{
+	border-width: 0 87.5px 151.6px 87.5px;
+	border-color: transparent transparent #DAB975 transparent;
+}
+
+/* ===================== POP-UP ===================== */ 
+#popup{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	display: none;
+}
+
+#info{
+	position: relative;
+	width: 200px;
+	padding: 25px;
+	color: #DAB975;
+	background-color: #111;
+	border: 7px double #DAB975;
+	flex-flow: column wrap;
+}
+
+#info span{
+	font-size: 3em;
+	margin-bottom: 20px;
+}
+
+#info h2{
+	font-size: 1.5em;
+	margin: 0;
+}
+
+#info i{
+	font-style: normal;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	margin-top: -5px;
+}
+
+#info p{
+	font-size: 0.9em;
+	text-align: justify;
+	text-align-last: center;
+	margin: 20px 0 30px 0;
+}
+
+#info a{
+	text-decoration: none;
+	font-weight: bold;
+	color: #111;
+	padding: 5px 20px;
+	background-color: #DAB975;
+	border: 1px solid #DAB975;
+	transition: all 0.3s ease-in-out;
+}
+
+#info a:hover{
+	color: #DAB975;
+	background-color: transparent;
+}
+
+#info button{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 25px;
+	height: 25px;
+	padding: 5px;
+	border: 1px solid #DAB975;
+	color: #DAB975;
+	background-color: #111;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+#info button:hover{	
+	outline: none;
+	color: #111;
+	background-color: #DAB975;
+}
+
+#info button span{
+	font-size: 1em;
+}
+
+/* ===================== CREDS <3 ===================== */ 
+.creds{
+	position: fixed;
+	bottom: 10px;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	color: #DAB975;
+	opacity: 0;
+}
