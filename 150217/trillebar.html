@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>TRILLEBÅR | CSS animasjoner</title>
+
+<link rel="stylesheet" type="text/css" href="css/oppgaver-style.css">
+
+<style type="text/css">
+
+#trillebaar{
+	background-color: transparent;
+	overflow: hidden;
+	animation-name: trille;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count:infinite;
+}
+
+#kropp{
+	z-index: 3;
+}
+
+#arm1{
+	width: 110px;
+	position: relative;
+	top: 0px;
+	left: -190px;
+	z-index: 4;	
+	animation-name: roter;
+    animation-duration: 0.4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#arm2{
+	width: 110px;
+	position: relative;
+	top: 10px;
+	left: -305px;
+	z-index: 2;	
+	animation-name: roter;
+    animation-duration: 0.4s;
+    animation-delay: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes trille {
+	0%    {margin-left: -50%;}
+	25%   {margin-left: 50%;}
+    50%   {transform: rotateY(180deg);}
+    75%   {margin-left: -50%;}
+    100%  {transform: rotateY(0deg); margin-left: -50%;}
+}
+
+@keyframes roter {
+	0%    {transform: rotate(-360deg);}
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="innpakning" class="flex centered">
+	<div id="header" class="flex centered"> HEADER </div>
+	<div id="meny" class="flex centered">
+		<a href="index.html">index</a>
+		<a href="trillebar.html">trillebår</a>
+		<a href="sol.html">sol</a>
+		<a href="tannhjul.html">tannhjul</a>
+		<a href="skalvekt.html">skålvekt</a>
+	</div>
+	<div id="hoveddel" class="flex centered">
+		<div id="trillebaar">
+			<img src="bildefiler/trillebar-kropp.png" id="kropp" width="360px">
+			<img src="bildefiler/trillebar-arm1.png" id="arm1">
+			<img src="bildefiler/trillebar-arm2.png" id="arm2">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

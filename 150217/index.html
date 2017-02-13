@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Animasjoner med CSS</title>
+
+<!-- font awesome library -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/index-style.css">
+
+</head>
+<body>
+
+<div id="innpakning" class="flex centered">
+	<div id="header-index">
+		<div id="overlay" class="flex centered">
+			<h1>CSS ANIMASJONER</h1>
+			<div class="introtext">innleveringsoppgave 15.02.2017</div>
+			<div class="up transitioned" onclick="scrollDown()"><span class="fa fa-angle-double-down fa-lg"></span></div>
+		</div>
+	</div>
+
+	<div id="meny" class="flex centered">
+		<div class="down" onclick="scrollUp()"><span class="fa fa-angle-double-up fa-lg"></span></div>
+	</div>
+
+	<div id="hoveddel" class="flex centered">
+		<!-- LINKER -->
+		<div id="links">
+			<a href="#" onmouseover="mOverRoter('zero')" onmouseout="mOutRoter('zero')" onclick="visInfo('0')">
+				<span class="fa fa-shopping-cart"></span></a>
+			<a href="#" onmouseover="mOverRoter('one')" onmouseout="mOutRoter('one')" onclick="visInfo(1)">
+				<span class="fa fa-sun-o"></span></a>
+			<a href="#" onmouseover="mOverRoter('three')" onmouseout="mOutRoter('three')" onclick="visInfo('2')">
+				<span class="fa fa-cogs"></span></a>
+			<a href="#" onmouseover="mOverRoter('two')" onmouseout="mOutRoter('two')" onclick="visInfo('3')">
+				<span class="fa fa-balance-scale"></span></a>
+		</div>
+
+		<!-- TREKANTER -->
+		<div id="triangles" class="flex centered">
+			<div class="tri zero transitioned"></div>
+			<div class="bottomtri flex centered">
+				<div class="tri one transitioned"></div>
+				<div class="tri two transitioned"></div>
+				<div class="tri three transitioned"></div>
+			</div>
+		</div>
+
+		<!-- POP-UP BOKS -->
+		<div id="popup" class="flex centered">
+			<div id="info" class="flex centered">
+				<span class="fa fa-sun-o"></span>	<!-- symbol -->
+				<h2>SOL</h2>
+				<i>oppgave b</i>
+				<p>Lag en animasjon av en sol som roterer og beveger seg over skjermen.</p>
+				<a href="sol.html"><b class="fa fa-play"></b></a>
+				<button onclick="lukkInfo()"><span class="fa fa-times"></span></button> 	<!-- lukk-knapp -->
+			</div>
+		</div>
+
+		<!-- CREDS -->
+		<div class="creds transitioned">©2017 Zandrex Camagon. All rights reserved.</div>
+	</div> <!-- /hoveddel -->
+</div> <!-- /innpakning -->
+
+<script type="text/javascript">
+
+function scrollDown() {
+	document.querySelector("#header-index").style.marginTop = "-100vh";
+	document.querySelector(".up").style.opacity = "0";
+	document.querySelector(".down").style.opacity = "1";
+	document.querySelector(".creds").style.opacity = "1";
+}
+
+function scrollUp() {
+	document.querySelector("#header-index").style.marginTop = "0px";
+	document.querySelector(".up").style.opacity = "1";
+	document.querySelector(".down").style.opacity = "0";
+	document.querySelector(".creds").style.opacity = "0";
+}
+
+function mOverRoter(id) {
+	document.querySelector('.'+id).style.transform = "rotateY(180deg)";
+
+	if (id == 'two') {
+		document.querySelector('.'+id).style.borderColor = "#111 transparent transparent transparent";
+	} else{
+		document.querySelector('.'+id).style.borderColor = "transparent transparent #111 transparent";
+	};
+}
+
+function mOutRoter(id) {
+	document.querySelector('.'+id).style.transform = "rotateY(0deg)";
+
+	if (id == 'two') {
+		document.querySelector('.'+id).style.borderColor = "#DAB975 transparent transparent transparent";
+	} else{
+		document.querySelector('.'+id).style.borderColor = "transparent transparent #DAB975 transparent";
+	};
+}
+
+function visInfo(id) {
+	document.querySelector("#popup").style.display = "flex";
+
+	hentInfo(id);
+}
+
+function hentInfo(id) {
+
+	var infoArray = [
+		trillebar = {
+			symbol: "fa fa-shopping-cart",
+			navn: "TRILLEBÅR",
+			oppgave: "oppgave a",
+			beskrivelse: "Lag en animasjon som viser en trillebår som beveger seg. Hjulet på trillebåren skal gå rundt.",
+			link: "trillebar.html"
+			},
+		sol = {
+			symbol: "fa fa-sun-o",
+			navn: "SOL",
+			oppgave: "oppgave b",
+			beskrivelse: "Lag en animasjon av en sol som roterer og beveger seg over skjermen.",
+			link: "sol.html"
+			},
+		tannhjul = {
+			symbol: "fa fa-cogs",
+			navn: "TANNHJUL",
+			oppgave: "oppgave c + d",
+			beskrivelse: "Ta utgangspunkt i de tre tannhjulene og lag en animasjon der det røde tannhjulet roterer med klokken og de to sorte roterer mot klokken.",
+			link: "tannhjul.html"
+		},
+		skalvekt = {
+			symbol: "fa fa-balance-scale",
+			navn: "SKÅLVEKT",
+			oppgave: "oppgave e",
+			beskrivelse: "Lag en animasjon av en skålvekt. Å klikke på en av skålene representerer hendelsen legg en enhet i denne skåla. Når det legges en enhet i en skål skal vekta helle mot denne skålen, og slik fortsetter det hver gang en av skålene klikkes på.",
+			link: "skalvekt.html"
+		}
+	];
+
+	document.querySelector("#info > span").className = infoArray[id].symbol;
+	document.querySelector("#info > h2").innerHTML = infoArray[id].navn;
+	document.querySelector("#info > i").innerHTML = infoArray[id].oppgave;
+	document.querySelector("#info > p").innerHTML = infoArray[id].beskrivelse;
+	document.querySelector("#info > a").setAttribute('href', infoArray[id].link);
+
+}
+
+function lukkInfo() {
+	document.querySelector("#popup").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

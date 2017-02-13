@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>TANNHJUL | CSS animasjoner</title>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/oppgaver-style.css">
+
+<style type="text/css">
+
+#tannhjuler{
+	position: relative;
+	width: 500px;
+	height: 300px;
+	background-color: transparent;
+}
+
+#tannhjuler img:nth-child(1){
+	position: absolute;
+	top: 48px;
+	left: 202px;
+	width: 70px;
+	z-index: 1;
+	animation: 5s linear 0s infinite;
+}
+
+/*
+#tannhjuler img:nth-child(1){
+	animation-name: roterMotUrs;
+}
+*/
+
+#tannhjuler img:nth-child(2){
+	position: absolute;
+	top: 90px;
+	left: 245px;
+	width: 90px;
+	z-index: 2;
+	animation: 5s linear 0s infinite;
+}
+
+#tannhjuler img:nth-child(3){
+	position: absolute;
+	top: 148px;
+	left: 180px;
+	width: 100px;
+	z-index: 1;
+	animation: 5s linear 0s infinite;
+}
+
+@keyframes roterMedUrs{
+	0% {transform: rotate(360deg);}
+}
+
+@keyframes roterMotUrs{
+	0% {transform: rotate(-360deg);}
+}
+
+#knapper{
+	width: 500px;
+	background-color: transparent;
+	padding: 10px 0;
+}
+
+button{
+	border: 2px solid #DAB975;
+	outline: none;
+	color: #DAB975;
+	padding: 10px 12px;
+	background-color: #111;
+	cursor: pointer;
+}
+
+button:hover{
+	color: #111;
+	background-color: #DAB975;
+}
+
+button:nth-child(2){
+	margin: 0 10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="innpakning" class="flex centered">
+	<div id="header" class="flex centered"> HEADER </div>
+	<div id="meny" class="flex centered">
+		<a href="index.html">index</a>
+		<a href="trillebar.html">trillebår</a>
+		<a href="sol.html">sol</a>
+		<a href="tannhjul.html">tannhjul</a>
+		<a href="skalvekt.html">skålvekt</a>
+	</div>
+	<div id="hoveddel" class="flex centered">
+		<div id="tannhjuler" class="flex centered">
+			<img src="bildefiler/sort tannhjul.png" id="hjul1">
+			<img src="bildefiler/rødt tannhjul.png" id="hjul2">
+			<img src="bildefiler/sort tannhjul.png" id="hjul3">
+			<!-- <img src="bildefiler/Tannhjul.png" width="200px;"> -->
+		</div>
+		<div id="knapper" class="flex centered">
+			<button class="transitioned" title="play" onclick="playAnimation()"><span class="fa fa-play"></span></button>
+			<button class="transitioned" title="stop" onclick="stopAnimation()"><span class="fa fa-stop"></span></button>
+			<button class="transitioned" title="change direction" onclick="byttRetning()"><span class="fa fa-undo"></span></button>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+function playAnimation() {
+	document.querySelector("#hjul1").style.animationName = "roterMotUrs";
+	document.querySelector("#hjul2").style.animationName = "roterMedUrs";
+	document.querySelector("#hjul3").style.animationName = "roterMotUrs";
+}
+
+function stopAnimation() {
+	document.querySelector("#hjul1").style.animationName = "";
+	document.querySelector("#hjul2").style.animationName = "";
+	document.querySelector("#hjul3").style.animationName = "";
+}
+
+function byttRetning() {
+	document.querySelector("#hjul1").style.animationName = "roterMedUrs";
+	document.querySelector("#hjul2").style.animationName = "roterMotUrs";
+	document.querySelector("#hjul3").style.animationName = "roterMedUrs";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SOL | CSS animasjoner</title>
+
+<link rel="stylesheet" type="text/css" href="css/oppgaver-style.css">
+	
+<style type="text/css">
+
+#hoveddel{
+	background-color: #000;
+	animation: byttFarge 5s linear 1s infinite;
+}
+
+#bakken{
+	position: fixed;
+	bottom: 0;
+	width: 500px;
+	height: 100px;
+	background-color: #000;
+	animation: byttFarge 5s linear 1s infinite;
+}
+
+#bakken img{
+	position: absolute;
+	top: -100px;
+	left: -10px;
+}
+
+#sol{
+    animation: roter 5s linear 0s infinite;
+}
+
+#mane{
+	animation: roter 5s linear 0s infinite;
+}
+
+@keyframes roter {
+    0%   {transform: rotate(360deg);}
+}
+
+#solsystemet{
+	margin-top: 150px;
+	width: 500px;
+	height: 500px;
+	background-color: transparent;
+	justify-content: space-between;
+	align-items: center;
+	animation: roterHele 5s linear 0s infinite;
+}
+
+@keyframes roterHele {
+	0% {transform: rotate(360deg);}
+}
+
+@keyframes byttFarge {
+	0%   {background-color: #000;}
+	50%  {background-color: #fff;}
+	100% {background-color: #000;}
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="innpakning" class="flex centered">
+	<div id="header" class="flex centered"> HEADER </div>
+	<div id="meny" class="flex centered">
+		<a href="index.html">index</a>
+		<a href="trillebar.html">trillebår</a>
+		<a href="sol.html">sol</a>
+		<a href="tannhjul.html">tannhjul</a>
+		<a href="skalvekt.html">skålvekt</a>
+	</div>
+	<div id="hoveddel" class="flex centered">
+		<div id="solsystemet" class="flex">
+			<img src="bildefiler/sol.png" id="sol" width="150px">
+			<img src="http://images.clipartpanda.com/moon-clip-art-moon-clip-art-11.gif" id="mane" width="100px">
+		</div>
+		<div id="bakken">
+			<img src="http://images.clipartpanda.com/grass-clipart-transparent-grass-clipart-free-clip-art-images.png" id="gress" width="510px">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
