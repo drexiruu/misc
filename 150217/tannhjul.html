@@ -22,7 +22,8 @@
 	left: 202px;
 	width: 70px;
 	z-index: 1;
-	animation: 5s linear 0s infinite;
+	animation: roterMotUrs 5s linear 0s infinite;
+	animation-play-state: paused;
 }
 
 /*
@@ -37,7 +38,8 @@
 	left: 245px;
 	width: 90px;
 	z-index: 2;
-	animation: 5s linear 0s infinite;
+	animation: roterMedUrs 5s linear 0s infinite;
+	animation-play-state: paused;
 }
 
 #tannhjuler img:nth-child(3){
@@ -46,7 +48,8 @@
 	left: 180px;
 	width: 100px;
 	z-index: 1;
-	animation: 5s linear 0s infinite;
+	animation: roterMotUrs 5s linear 0s infinite;
+	animation-play-state: paused;
 }
 
 @keyframes roterMedUrs{
@@ -103,9 +106,9 @@ button:nth-child(2){
 			<!-- <img src="bildefiler/Tannhjul.png" width="200px;"> -->
 		</div>
 		<div id="knapper" class="flex centered">
-			<button class="transitioned" title="play" onclick="playAnimation()"><span class="fa fa-play"></span></button>
-			<button class="transitioned" title="stop" onclick="stopAnimation()"><span class="fa fa-stop"></span></button>
-			<button class="transitioned" title="change direction" onclick="byttRetning()"><span class="fa fa-undo"></span></button>
+			<button class="transitioned" title="spill av" onclick="playAnimation()"><span class="fa fa-play"></span></button>
+			<button class="transitioned" title="stopp" onclick="stopAnimation()"><span class="fa fa-pause"></span></button>
+			<button class="transitioned" title="bytt retning" onclick="byttRetning()"><span class="fa fa-exchange fa-lg"></span></button>
 		</div>
 	</div>
 </div>
@@ -113,21 +116,27 @@ button:nth-child(2){
 <script type="text/javascript">
 	
 function playAnimation() {
-	document.querySelector("#hjul1").style.animationName = "roterMotUrs";
-	document.querySelector("#hjul2").style.animationName = "roterMedUrs";
-	document.querySelector("#hjul3").style.animationName = "roterMotUrs";
+	document.querySelector("#hjul1").style.WebkitAnimationPlayState = "running";
+	document.querySelector("#hjul2").style.WebkitAnimationPlayState = "running";
+	document.querySelector("#hjul3").style.WebkitAnimationPlayState = "running";
 }
 
 function stopAnimation() {
-	document.querySelector("#hjul1").style.animationName = "";
-	document.querySelector("#hjul2").style.animationName = "";
-	document.querySelector("#hjul3").style.animationName = "";
+	document.querySelector("#hjul1").style.WebkitAnimationPlayState = "paused";
+	document.querySelector("#hjul2").style.WebkitAnimationPlayState = "paused";
+	document.querySelector("#hjul3").style.WebkitAnimationPlayState = "paused";
 }
 
 function byttRetning() {
-	document.querySelector("#hjul1").style.animationName = "roterMedUrs";
-	document.querySelector("#hjul2").style.animationName = "roterMotUrs";
-	document.querySelector("#hjul3").style.animationName = "roterMedUrs";
+	if (document.querySelector("#hjul1").style.animationName == "roterMedUrs") {
+		document.querySelector("#hjul1").style.animationName = "roterMotUrs";
+		document.querySelector("#hjul2").style.animationName = "roterMedUrs";
+		document.querySelector("#hjul3").style.animationName = "roterMotUrs";
+	} else {
+		document.querySelector("#hjul1").style.animationName = "roterMedUrs";
+		document.querySelector("#hjul2").style.animationName = "roterMotUrs";
+		document.querySelector("#hjul3").style.animationName = "roterMedUrs";
+	};
 }
 
 </script>
