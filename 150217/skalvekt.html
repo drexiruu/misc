@@ -4,11 +4,171 @@
 	<meta charset="UTF-8">
 	<title>SKÅLVEKT | CSS animasjoner</title>
 
-<link rel="stylesheet" type="text/css" href="css/oppgaver-style.css">
-
 <style type="text/css">
 
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
 
+body{
+	margin: 0;
+	color: #333;
+	font-family: "Calibri", sans-serif;
+	font-size: 16px;
+	letter-spacing: 1px;
+	overflow: hidden;
+}
+
+a{
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #DAB975;
+	padding: 5px 20px;
+	background-color: transparent;
+	border: 1px solid #DAB975;
+	margin: 0px 10px;
+	transition: all 0.3s ease-in-out;
+}
+
+a:hover{
+	color: #111;
+	background-color: #DAB975;
+}
+
+.flex{
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.centered{
+	justify-content: center;
+	align-items: center;
+}
+
+.transitioned{
+	transition: all 0.3s ease-in-out;
+}
+
+#innpakning{
+	width: 100%;
+	height: 100vh;
+}
+
+#header{
+	width: 100%;
+	height: 100px;
+	background-color: #987538;
+	background-image: url('illuminati-header.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#header h1{
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 2em;
+	color: #fff;
+	padding: 10px 20px;
+	border: 2px solid #fff;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+#meny{
+	width: 100%;
+	height: 50px;
+	background-color: #111;
+}
+
+#hoveddel{
+	width: 100%;
+	height: calc(100vh - 150px);
+	flex-flow: column wrap;
+}
+
+#hand{
+	position: relative;
+	width: 500px;
+	height: 200px;
+	background-color: transparent;
+}
+
+#hand img:nth-child(1){
+	width: 300px;
+	position: absolute;
+	top: -50px;
+	left: 75px;
+	/*animation: roterMedKlokka 1s linear 0s infinite;*/
+}
+
+#hand img:nth-child(2){
+	width: 300px;
+	position: absolute;
+	top: -50px;
+	left: 125px;
+	/*animation: roterMotKlokka 1s linear 0s infinite;*/
+}
+
+#hand img:nth-child(3){
+	width: 250px;
+	position: absolute;
+	top: 0px;
+	left: 120px;
+}
+
+#hand img:nth-child(4){
+	width: 150px;
+	position: absolute;
+	top: 30px; /*330px*/
+	left: 170px; /*50px*/
+	z-index: 7;
+	/*transform: rotate(15deg);*/
+}
+
+@keyframes roterMedKlokka{
+	50%	 {transform: rotate(10deg);}
+	100% {transform: rotate(0deg);}
+}
+
+@keyframes roterMotKlokka{
+	50%	 {transform: rotate(-10deg);}
+	100% {transform: rotate(0deg);}
+}
+
+#skalvekt{
+	position: relative;
+	width: 500px;
+	height: 250px;
+	background-color: transparent;
+	justify-content: center;
+}
+
+#skalvekt img{
+	width: 350px;
+}
+
+#skalvekt img:nth-child(1){
+	position: absolute;
+	bottom: -50px;
+	z-index: 8;
+}
+
+#skalvekt img:nth-child(2){
+	position: absolute;
+	top: calc(65px - 200px);
+	z-index: 8;
+}
+
+#skalvekt img:nth-child(3){
+	position: absolute;
+	top: calc(85px - 200px);
+	left: -30px;
+	z-index: 9;
+}
+
+#skalvekt img:nth-child(4){
+	position: absolute;
+	top: calc(85px - 200px);
+	left: 180px;
+	z-index: 9;
+}
 
 </style>
 
@@ -16,17 +176,27 @@
 <body>
 
 <div id="innpakning" class="flex centered">
-	<div id="header" class="flex centered"> HEADER </div>
+	<div id="header" class="flex centered"> <h1>NEW WORLD ORDER</h1> </div>
 	<div id="meny" class="flex centered">
-		<a href="index.html">index</a>
+		<a href="trillebar-index.html">index</a>
 		<a href="trillebar.html">trillebår</a>
 		<a href="sol.html">sol</a>
 		<a href="tannhjul.html">tannhjul</a>
 		<a href="skalvekt.html">skålvekt</a>
 	</div>
 	<div id="hoveddel" class="flex centered">
-		<h1>404</h1>
-		<p>UNFINISHED PAGE</p>
+		<div id="hand" class="flex">
+			<img src="hand01.png">
+			<img src="hand02.png">
+			<img src="mye-penger.png">
+			<img src="penger.png">
+		</div>
+		<div id="skalvekt" class="flex">
+			<img src="skalvekt01.png">
+			<img src="skalvekt02.png">
+			<img src="skalvekt03.png">
+			<img src="skalvekt03.png">
+		</div>
 	</div>
 </div>
 
