@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>x</title>
+
+<style type="text/css">
+
+#skålvekt{
+	width: 550px;
+	height: 550px;
+	position: relative;
+}
+
+#stang{
+	position: absolute;
+	top: -135px;
+	left: 0;
+	transition: all 0.2s ease;
+}
+
+#venstreskål{
+	position: absolute;
+	top: -105px;
+	left: -160px;
+	transition: all 0.2s ease;
+}
+
+#høyreskål{
+	position: absolute;
+	top: -105px;
+	left: 160px;
+	transition: all 0.2s ease;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="skålvekt">
+	<img src="http://i.imgur.com/AI4AvtV.png" id="rør">
+	<img src="http://i.imgur.com/ofXv9iZ.png" id="stang">
+	<img src="http://i.imgur.com/xwYw9En.png" id="venstreskål" onclick="leggTilVenstre()">
+	<img src="http://i.imgur.com/xwYw9En.png" id="høyreskål" onclick="leggTilHøyre()">
+</div>
+
+<script type="text/javascript">
+	
+var i = 0;
+
+function leggTilVenstre() {
+
+	i--;
+
+	document.getElementById("stang").style.transform = "rotate(" + (i * 5) + "deg)"
+	document.getElementById("venstreskål").style.marginTop = -(i * 15) + "px";
+	document.getElementById("høyreskål").style.marginTop = (i * 15) + "px";
+}
+
+function leggTilHøyre() {
+
+	i++;
+
+	document.getElementById("stang").style.transform = "rotate(" + (i * 5) + "deg)"
+	document.getElementById("venstreskål").style.marginTop = -(i * 15) + "px";
+	document.getElementById("høyreskål").style.marginTop = (i * 15) + "px";
+}
+
+</script>
+
+</body>
+</html>
