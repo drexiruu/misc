@@ -8,6 +8,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 	
 body{
 	margin: 0;
@@ -30,7 +31,7 @@ body{
 	height: 225px;
 	position: relative;
 	margin-bottom: 0px;
-	border: 7px double #ffcc99;
+	border: 15px solid rgba(255, 204, 153, 0.5);
 	overflow: hidden;
 }
 
@@ -102,12 +103,68 @@ a:hover{
 	background-color: #ffcc99;
 }
 
+#quote{
+	width: 375px;
+	height: 100px;
+	background-color: transparent;
+	position: relative;
+	top: 25px;
+	left: -10px;
+	z-index: 99;
+}
+
+h3{
+	width: 100%;
+	font-family: 'Merriweather', serif;
+	text-align: center;
+	font-weight: normal;
+	color: #ffccaa;
+	position: relative;
+	left: -7px;
+}
+
+h1{
+	width: 100%;
+	font-family: 'Merriweather', serif;
+	text-align: center;
+	color: rgba(255, 204, 153, 1);
+	font-size: 3em;
+	margin: 0;
+	position: relative;
+	top: -40px;
+}
+
+h2{
+	font-family: 'Playfair Display', serif;
+	font-size: 8.5em;
+	font-weight: normal;
+	color: #ffcc99;
+	position: absolute;
+	top: -150px;
+	left: 265px;
+	background-color: transparent;
+	padding: 0;
+	height: 158px;
+	animation: roter 2.5s linear infinite;
+}
+
+@keyframes roter{
+	100% {transform: rotate(360deg);}
+}
+
 </style>
 
 </head>
 <body>
 
 <div id="innpakning">
+
+	<div id="quote">
+		<h3>You exist &nbsp;&nbsp; inside</h3>
+		<h1>spring</h1>
+		<h2>*</h2>
+	</div>
+
 	<div id="bildekarusell">
 		<div class="bilde"></div>
 		<div class="bilde"></div>
