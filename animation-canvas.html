@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas animation</title>
+
+<style type="text/css">
+	
+body{
+	margin: 0;
+}
+
+#innpakning{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
+}
+
+#can{
+	border: 3px solid #000;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="innpakning">
+	<canvas id="can" width="500px" height="500px"></canvas>
+</div>
+
+<script type="text/javascript">
+	
+	var c = document.querySelector("#can");
+	var ctx = c.getContext("2d");
+
+	class Ball {
+		constructor (xPos, yPos, hast, hast2) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.hast = hast;
+        this.hast2 = hast2;
+    }
+
+        tegnBall() {
+        ctx.beginPath();
+        ctx.arc(this.xPos, this.yPos, 50, 0, Math.PI *2);
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        //ctx.fillStyle = "#fff";
+        //ctx.fill();
+        ctx.closePath();
+    }
+
+        flyttBall() {
+	        this.xPos += this.hast;
+	        this.yPos += this.hast2;
+	        if(this.xPos-50 < 0 || this.xPos+50 > can.width ) {
+	        	this.hast= -this.hast;
+        	}
+        	 if(this.yPos-50 < 0 || this.yPos+50 > can.width ) {
+	        	this.hast2= -this.hast2;
+        	}
+     	}
+    }
+	
+	var ball = new Ball(can.width/2, can.height/2, 10, 15);
+
+	function animerBall(){
+       //ctx.clearRect (0, 0, can.width, can.height);
+       ball.flyttBall();
+       ball.tegnBall();
+       requestAnimationFrame(animerBall);
+    }
+    requestAnimationFrame(animerBall); 
+
+    /*
+    function changeColor(){
+    	var color1 = Math.floor(Math.random()*256);
+    	var color2 = 0;
+    	var color3 = 0;
+
+    	ctx.fillStyle = "rgb(" + color1 + "," + color2 + "," + color3 + ")";
+        ctx.fill();
+
+        requestAnimationFrame(changeColor);
+    }
+
+    requestAnimationFrame(changeColor);
+    */
+
+    var color1 = 0;
+    var color2 = 100;
+    var color3 = 50;
+
+    var counter = 0;
+
+	var i = setInterval(function changeColor(){
+    	color1++;
+    	ctx.fillStyle = "hsl(" + color1 + "," + color2 + "%," + color3 + "%)";
+        ctx.fill();
+
+    counter++;
+    if(counter === 355) {
+        //clearInterval(i);
+        color1--;
+    }
+}, 1);
+
+</script>
+
+</body>
+</html>
