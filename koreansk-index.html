@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Koreansk.</title>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+	
+body{
+	margin: 0;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Helvetica', sans-serif;
+}
+
+::selection{
+	color: #000;
+}
+
+#innpakning{
+	width: 100%;
+	height: 100vh;
+	background-color: #fff;
+}
+
+#header{
+	width: calc(100% - 200px);
+	height: 500px;
+	padding: 0 100px 50px 100px;
+	background-color: #00BD73;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+	#logo{
+		width: 80px;
+		height: 80px;
+		background-color: #fff;
+	}
+	h1{
+		font-size: 5em;
+		font-weight: normal;
+		margin: 0;
+	}
+	h2{
+		font-size: 1.4em;
+		text-transform: uppercase;
+		margin: 10px 0 5px 0;
+	}
+	h3{
+		font-weight: normal;
+		margin: 0;
+	}
+
+#linker{
+	width: calc(100% - 200px);
+	height: 120px;
+	padding: 0 100px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: -70px;
+}
+	.link{
+		width: 335px;
+		height: 120px;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.link-img{
+		width: 120px;
+		height: 120px;
+		background-color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid #00BD73;
+	}
+	.link-desc{
+		width: 200px;
+		height: 100px;
+	}
+		.link-desc a{
+			display: inline-block;
+			color: #fff;
+			font-size: 1.5em;
+			font-weight: bold;
+			text-decoration: none;
+			text-transform: uppercase;
+			padding: 10px;
+			border: 2px solid #fff;
+			transition: all 0.2s ease-in-out;
+		}
+		.link-desc a:hover{
+			color: #00BD73;
+			background-color: #fff;
+		}
+		.link-desc p{
+			color: #00BD73;
+		}
+
+</style>
+
+</head>
+<body>
+
+<div id="innpakning">
+	<div id="header">
+		<div id="logo"></div>
+		<h1>키위김밥</h1>
+			<h2>les og skriv koreansk *</h2>
+			<h3>* uten å forstå noen ting</h3>
+	</div>
+	<div id="linker">
+		<div class="link">
+			<div class="link-img">
+				<span class="fa fa-language" style="font-size: 80px; color:#00BD73;"></span>
+			</div>
+			<div class="link-desc">
+				<a href="koreansk-tastatur.html">alfabet</a>
+				<p>Bli kjent med Hangul (한글), det koreanske skriftspråket</p>
+			</div>
+		</div> <!-- /link 1 -->
+
+		<div class="link">
+			<div class="link-img">
+				<span class="fa fa-question" style="font-size: 80px; color:#00BD73;"></span>
+			</div>
+			<div class="link-desc">
+				<a href="#">quiz</a>
+				<p>Ekstremt enkle spørsmål. Ja, du svarer på koreansk.</p>
+			</div>
+		</div> <!-- /link 2 -->
+
+		<div class="link">
+			<div class="link-img">
+				<span class="fa fa-paw" style="font-size: 80px; color:#00BD73;"></span>
+			</div>
+			<div class="link-desc">
+				<a href="#">om siden</a>
+				<p>Mer info om nettsiden og personene bak prosjektet.</p>
+			</div>
+		</div> <!-- /link 3 -->
+	</div>
+</div>
+
+</body>
+</html>
