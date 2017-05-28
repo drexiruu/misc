@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Kalkulator</title>
+</head>
+<body>
+
+<select id="energikilder">
+    <option value="0">Velg energikilde</option>
+    <option value="1">Sol</option>
+    <option value="2">Vann</option>
+    <option value="3">Vind</option>
+</select>
+
+<input id="tidInput" type="number" min="0" placeholder="Tid (timer)">
+
+<button onclick="regnUt()">Regn ut</button>
+
+<div id="resultat"></div>
+
+
+<script type="text/javascript">
+	
+	/*----------------------------------------------------------------------------------
+	------------------------------------------------------------------------------------
+	--------- Antar at oppgaven ber om å regne ut energiproduksjon etter x tid ---------
+	------- og at alle energikilder har forskjellig effektivitet / virkningsgrad -------
+	------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------*/
+
+
+	//---- Map med info om energikilder ------------------------------------------------
+        var energikilderMap = new Map();
+        
+        energikilderMap.set(1,{navn:"sol", effektivitet:0.7});
+        energikilderMap.set(2,{navn:"vann", effektivitet:0.8});
+        energikilderMap.set(3,{navn:"vind", effektivitet:0.9});
+
+
+    //---- Regner ut hvor mye energi som er produsert ----------------------------------
+	function regnUt() {
+
+		// henter energikilde
+		var energikildeEl = document.getElementById("energikilder");
+		var energiKildeNr = Number(energikildeEl.value);
+
+		// henter tid
+		var tidInputEl = document.getElementById("tidInput");
+		var tid = tidInputEl.value;
+
+
+		// hvis energikilde ikke er valgt
+		if (energiKildeNr == 0) {
+			document.getElementById("resultat").innerHTML = "Velg energikilde!";
+		};
+
+
+		// henter effektivitet fra Map
+		var effektivitet = energikilderMap.get(energiKildeNr).effektivitet;
+
+		// regner ut energi etter prosessen
+		var energiUt = (tid * effektivitet).toFixed(2);	// .toFixed(2) = 2 desimaler
+			// Bruker formelen W = p*t, altså arbeidet (energi) er lik effekt ganger tid
+
+
+		// skriver ut resultatet
+		document.getElementById("resultat").innerHTML = (energiUt + " kWh");
+	}
+
+</script>
+	
+
+</body>
+</html>
