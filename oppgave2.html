@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Oppgave 2</title>
+
+</head>
+<body>
+
+<h1>Gjødselberegning</h1>
+
+<table border="1" cellpadding="10" style="border-collapse: collapse">
+	<tr>
+		<th>Plante</th>
+		<th>Antall gram gjødsel per kvadratmeter</th>
+	</tr>
+	<tr>
+		<td>Rose</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>Lavendel</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>Pelargonia</td>
+		<td>6</td>
+	</tr>
+</table>
+
+
+<form>
+	<h2>Velg blomst:</h2>
+	<label><input type="radio" name="blomst" id="rose" checked> Rose</label><br>
+	<label><input type="radio" name="blomst" id="lavendel"> Lavendel</label><br>
+	<label><input type="radio" name="blomst" id="pelargonia"> Pelargonia</label>
+	
+	<h2>Skriv antall kvadratmeter:</h2>
+	<input id="kvadratmeter" type="number" min="0" placeholder="antall kvadratmeter"> <br><br>
+	<input type="submit" value="Regn ut antall gjødsel" onclick="gjodselBeregner(); return false;">
+</form> 
+
+<p id="resultat"></p>
+
+
+
+<script type="text/javascript">
+	
+function gjodselBeregner() {
+
+	// variabler for elementer
+		var kvadratmeterInp = document.getElementById("kvadratmeter");
+		var roseEl = document.getElementById("rose");
+		var lavendelEl = document.getElementById("lavendel");
+		var pelargoniaEl = document.getElementById("pelargonia");
+		var resultat = document.getElementById("resultat");
+
+
+	// sjekker blomsttype
+		var gpk; // gjødsel per kvadratmeter
+		var planteNavn; // navnet til blomstet
+
+		if (roseEl.checked) {
+			gpk = 4;
+			planteNavn = "rose";
+		}
+		else if (lavendelEl.checked) {
+			gpk = 3;
+			planteNavn = "lavendel";
+		}
+		else if (pelargoniaEl.checked) {
+			gpk = 6;
+			planteNavn = "pelargonia";
+		};
+
+
+	// henter antall kvadratmeter
+		var antallKvadratmeter = kvadratmeterInp.value;
+
+
+	// regner ut totalt antall gjødsel
+		if (antallKvadratmeter < 0) {
+			// hvis antall kvadratmeter er negativt
+			resultat.innerHTML = "Skriv positivt antall kvadratmeter.";
+		}
+		else{
+			var antallGjodsel = antallKvadratmeter * gpk;
+			resultat.innerHTML = "Til " + antallKvadratmeter + " kvadratmeter " + planteNavn + "bed trengs det " + antallGjodsel + ' gram "Nifka Eco".'
+		};
+}
+
+
+</script>
+
+</body>
+</html>
