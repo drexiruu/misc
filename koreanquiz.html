@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Quiz</title>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+	
+body{
+	margin: 0;
+	font-size: 16px;
+}
+	
+#container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#ibox, #abox, #rbox{
+	width: 460px;
+	height: 360px;
+	padding: 20px;
+	background-color: springgreen;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#qbox{
+	width: 460px;
+	height: 360px;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#description{
+	max-width: 400px;
+}
+
+#question{
+	margin: 0 0 20px 0;
+}
+
+#t1{
+	outline: none;
+	border: none;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 1em;
+}
+
+#kbd{
+	position: absolute;
+	top: 330px; /* 330px */
+	left: calc(50% - 220px);
+	width: 420px;
+	height: 160px;
+	padding: 10px;
+	background-color: #ebeef8;
+	border: none;
+	margin-top: 100vh;
+	transition: all 0.3s ease-in-out;
+}
+
+#kbd-logo{
+	display: none;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="container">
+
+<!-- intro -->
+<div id="ibox">
+	<h1>한글 Quiz</h1>
+	<p><small>Liten quiz om K-pop idols.</small></p>
+	<p>Nivå: &#9733;&#9733;
+			<small><small>(kommer an på deg egt.)</small></small></p>
+	<button onclick="startQuiz()">Start quizen</button>
+</div>
+
+<!-- question -->
+<form id="qbox" style="display: none;">
+	<p id="description">
+		Sangeren IUs brukernavn på Instagram er dlwlrma.
+	</p>
+	<h2 id="question">Hva står dlwlrma for?</h2>
+	<input id="t1" type="text" name="answerinput">
+	<input type="submit" value="submit" onclick="checkAnswer(); return false;">
+</form>
+
+<!-- answer checked -->
+<div id="abox" style="display: none;">
+	<h2 id="aResult">FEIL</h2>
+	<h3>riktig svar:</h3>
+	<p><span id="correctH">x</span> / <span id="correctR">xx</span></p>
+	<button onclick="nextQuestion()">Neste spørsmål</button>
+</div>
+
+<!-- quiz result -->
+<div id="rbox" style="display: none;">
+	<h2>Quizen er ferdig.</h2>
+	<p>Du svarte riktig på <span id="tPoints">x</span> spørsmål.</p>
+	<a href="#" id="linkButton">Prøv igjen</button>
+</div>
+	
+</div> <!-- /container -->
+
+
+<!-- google scripts -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">	
+		google.load("elements", "1", {
+			packages: "keyboard"
+		});
+
+		function onLoad() {
+	        var kbd = new google.elements.keyboard.Keyboard(
+	          [google.elements.keyboard.LayoutCode.KOREAN],
+	          ['t1']);
+	    }
+
+	    google.setOnLoadCallback(onLoad);
+	</script>
+
+<script type="text/javascript">
+	
+// Questions
+	var questionInfos = [
+		descriptions = [
+			"Sangeren IUs brukernavn på Instagram er dlwlrma.",
+			"Kim Taehyung, bedre kjent som V, er en medlem av BTS.",
+			"Myoui Mina er en medlem av TWICE og var tidligere ballettdanser.",
+			"Bang Min Ah er main vocalist i jentegruppa Girl's Day.",
+			"Red Velvet er en jentegruppe på fem medlemmer som debuterte i 2014.",
+			"I.O.I er en jentegruppe som debuterte i 2016 gjennom en survival show.",
+			"G-Dragon er en rapper, komponist, låtskriver, moteikon, og leder av det suksessfulle boybandet Big Bang."
+		],
+		questions = [
+			"Hva står dlwlrma for?",
+			"Skriv V på hangul.",
+			"Skriv Mina på hangul.",
+			"Skriv Min-ah på hangul.",
+			"Skriv Red Velvet på hangul.",
+			"Skriv I.O.I på hangul",
+			"Hva er hans egentlige navn? <br> (Hint: Dragon på koreansk er yong 용)"
+		],
+		rightAnswers = [
+			{hangul: "이지금", romanized: "i ji-geum (nå)"},
+			{hangul: "뷔", romanized: "bwi"},
+			{hangul: "미나", romanized: "mi-na"},
+			{hangul: "민아", romanized: "min-a"},
+			{hangul: "레드벨벳", romanized: "re-deu-bel-bet"},
+			{hangul: "아이오아이", romanized: "a-i-o-a-i"},
+			{hangul: "지용", romanized: "ji-yong"}
+		]
+	]
+
+// DOM
+	var ibox = document.getElementById("ibox"); // introbox
+	var qbox = document.getElementById("qbox"); // questionbox
+	var abox = document.getElementById("abox"); // answerbox
+	var rbox = document.getElementById("rbox"); // quiz resultbox
+	var hkeyboard = document.querySelector("#kbd") // korean keyboard
+
+	var description = document.getElementById("description") // description
+	var question = document.getElementById("question") // question
+	var aResult = document.getElementById("aResult") // answer result
+	var correctH = document.getElementById("correctH") // correct answer (hangul)
+	var correctR = document.getElementById("correctR") // correct answer (rmnzd)
+	var totalPoints = document.getElementById("tPoints") // # of right answers
+
+	var questionCount = 0; // starts with the first question
+	var point = 0; // starts with 0 points
+
+
+// Functions
+	
+	// starts quiz
+	function startQuiz() {
+		ibox.style.display = "none";
+		qbox.style.display = "flex";
+		hkeyboard.style.marginLeft = "0px";
+	}
+
+	// checks answer
+	function checkAnswer() {
+		var answer = qbox.answerinput.value;
+		var correctAnswer = rightAnswers[questionCount].hangul;
+		
+		if (answer == correctAnswer) {
+			aResult.innerHTML = "Riktig.";
+			point += 1;
+		} else {
+			aResult.innerHTML = "Feil.";
+			point += 0;
+		};
+
+		// prints out correct answers
+		correctH.innerHTML = correctAnswer;
+		correctR.innerHTML = rightAnswers[questionCount].romanized;
+
+		qbox.style.display = "none";	// closes questionbox
+		abox.style.display = "flex";	// shows answerbox
+	}
+
+	// jumps to next question
+	function nextQuestion() {
+		questionCount++;
+
+		if (questionCount < questions.length) {
+			// updates the description and question
+			description.innerHTML = descriptions[questionCount];
+			question.innerHTML = questions[questionCount];
+
+			// resets answer and input field
+			qbox.answerinput.value = ""
+
+			abox.style.display = "none";	// closes answerbox
+			qbox.style.display = "flex";	// shows questionbox
+		} else{
+			// after the last question/answer
+			abox.style.display = "none";	// closes answerbox
+			rbox.style.display = "flex";	// shows quiz resultbox
+			totalPoints.innerHTML = point;
+		};
+	}
+
+
+</script>
+
+</body>
+</html>
